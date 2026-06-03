@@ -908,26 +908,28 @@
 
         .adjust-photo-btn {
             display: none;
-            position: absolute;
-            bottom: 8px;
-            right: 8px;
-            background: rgba(0,0,0,0.62);
-            color: white;
-            border: none;
-            padding: 0.28rem 0.6rem;
-            border-radius: 6px;
-            font-size: 0.78rem;
+            width: 100%;
+            margin-top: 0.6rem;
+            background: linear-gradient(135deg, #fff8e1, #fef3c7);
+            color: #7a4f00;
+            border: 2px solid #f6c73a;
+            padding: 0.55rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
             cursor: pointer;
-            z-index: 5;
-            transition: background 0.2s;
-            backdrop-filter: blur(4px);
+            transition: all 0.2s ease;
             font-family: 'Noto Sans TC', sans-serif;
-            white-space: nowrap;
+            text-align: center;
+            letter-spacing: 0.5px;
         }
 
-        .adjust-photo-btn:hover { background: rgba(212,160,23,0.88); }
-
-        .upload-box.has-image .adjust-photo-btn { display: block; }
+        .adjust-photo-btn:hover {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-color: #d4a017;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(212,160,23,0.3);
+        }
 
         /* Activity assistant link inside postcard section */
         .postcard-assistant-link {
@@ -1935,9 +1937,9 @@
                         <div class="upload-placeholder">📷</div>
                         <div class="upload-text">點擊上傳或拍照</div>
                         <img class="upload-preview" id="preview-1" alt="微觀視角">
-                        <button class="adjust-photo-btn" onclick="openAdjustModal(1, event)">✂️ 調整焦點</button>
                     </div>
                     <input type="file" id="file-input-1" accept="image/*" style="display: none;" onchange="handleImageUpload(1, event)">
+                    <button class="adjust-photo-btn" id="adjust-btn-1" onclick="openAdjustModal(1, event)">✂️ 調整照片位置</button>
                     <input type="text" class="upload-input" id="label-1" placeholder="例如：人面陶罐的紋理">
                 </div>
 
@@ -1949,9 +1951,9 @@
                         <div class="upload-placeholder">📷</div>
                         <div class="upload-text">點擊上傳或拍照</div>
                         <img class="upload-preview" id="preview-2" alt="肉眼視角">
-                        <button class="adjust-photo-btn" onclick="openAdjustModal(2, event)">✂️ 調整焦點</button>
                     </div>
                     <input type="file" id="file-input-2" accept="image/*" style="display: none;" onchange="handleImageUpload(2, event)">
+                    <button class="adjust-photo-btn" id="adjust-btn-2" onclick="openAdjustModal(2, event)">✂️ 調整照片位置</button>
                     <input type="text" class="upload-input" id="label-2" placeholder="例如：紅樹林中的招潮蟹">
                 </div>
 
@@ -1963,9 +1965,9 @@
                         <div class="upload-placeholder">📷</div>
                         <div class="upload-text">點擊上傳或拍照</div>
                         <img class="upload-preview" id="preview-3" alt="感動瞬間">
-                        <button class="adjust-photo-btn" onclick="openAdjustModal(3, event)">✂️ 調整焦點</button>
                     </div>
                     <input type="file" id="file-input-3" accept="image/*" style="display: none;" onchange="handleImageUpload(3, event)">
+                    <button class="adjust-photo-btn" id="adjust-btn-3" onclick="openAdjustModal(3, event)">✂️ 調整照片位置</button>
                     <input type="text" class="upload-input" id="label-3" placeholder="例如：夕陽下的淡水河口">
                 </div>
             </div>
@@ -2159,6 +2161,7 @@
                     preview.style.objectPosition = `50% 50%`;
                     preview.classList.add(`show`);
                     box.classList.add(`has-image`);
+                    document.getElementById(`adjust-btn-${index}`).style.display = `block`;
                     checkGenerateButton();
                 };
                 reader.readAsDataURL(file);
