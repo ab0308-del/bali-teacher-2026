@@ -651,9 +651,9 @@
             animation: fadeInScale 0.6s ease;
         }
 
-        /* ── Landscape 6×4 postcard ── */
+        /* ── Landscape 6×4 postcard: photos top, text bottom ── */
         .postcard-container {
-            background: linear-gradient(160deg, #fffdf0 0%, #fff9e4 60%, #fffdf5 100%);
+            background: linear-gradient(180deg, #fffdf0 0%, #fff9e4 70%, #fffdf5 100%);
             border-radius: 4px;
             padding: 0;
             border: 5px solid #d4a017;
@@ -667,7 +667,7 @@
             margin: 0 auto;
             aspect-ratio: 6/4;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             font-family: 'Noto Serif TC', serif;
             overflow: hidden;
         }
@@ -675,36 +675,34 @@
         .postcard-container::before {
             content: '';
             position: absolute;
-            inset: 10px;
+            inset: 8px;
             border: 1px solid rgba(212,160,23,0.18);
             border-radius: 2px;
             pointer-events: none;
             z-index: 2;
         }
 
-        /* Left: photos panel (56%) */
+        /* Top: photo collage (~72% of height) */
         .postcard-photos {
-            width: 56%;
-            flex-shrink: 0;
+            flex: 11;
+            padding: 11px 11px 5px 11px;
             display: grid;
-            grid-template-columns: 3fr 2fr;
+            grid-template-columns: 5fr 3fr;
             grid-template-rows: 1fr 1fr;
-            height: 100%;
+            gap: 5px;
+            min-height: 0;
         }
 
         .postcard-photo {
+            border-radius: 3px;
             overflow: hidden;
             position: relative;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
 
         .postcard-photo.large {
             grid-column: 1;
             grid-row: 1 / 3;
-            border-right: 4px solid #d4a017;
-        }
-
-        .postcard-photo:nth-child(2) {
-            border-bottom: 2px solid #d4a017;
         }
 
         .postcard-photo img {
@@ -719,118 +717,58 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.72), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.68), transparent);
             color: white;
-            padding: 18px 6px 5px 6px;
-            font-size: 0.6rem;
+            padding: 16px 6px 5px 6px;
+            font-size: 0.58rem;
             letter-spacing: 0.8px;
             font-family: 'Noto Serif TC', serif;
             text-align: center;
         }
 
-        /* Right: info panel (44%) */
-        .postcard-info {
-            flex: 1;
+        /* Bottom: text area (~28% of height) */
+        .postcard-text-area {
+            flex: 4;
+            flex-shrink: 0;
             display: flex;
             flex-direction: column;
-            padding: 16px 16px 12px 14px;
-            position: relative;
-            min-width: 0;
-        }
-
-        .postcard-stamp {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 42px;
-            height: 52px;
-            border: 2px solid #d4a017;
-            border-radius: 2px;
-            display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255,255,255,0.7);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .postcard-stamp::before {
-            content: '郵票';
-            font-size: 0.48rem;
-            font-weight: 700;
-            color: #b8860b;
-            letter-spacing: 1px;
-        }
-
-        .postcard-header {
-            text-align: center;
-            margin-bottom: 10px;
-            flex-shrink: 0;
-            padding-right: 52px;
-        }
-
-        .postcard-header-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #7a4f00;
-            margin-bottom: 2px;
-            letter-spacing: 4px;
-            font-family: 'Playfair Display', 'Noto Serif TC', serif;
-            text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
-        }
-
-        .postcard-header-date {
-            font-size: 0.62rem;
-            color: #b8860b;
-            letter-spacing: 2px;
-            font-family: 'Playfair Display', serif;
-            opacity: 0.85;
-        }
-
-        .postcard-header-divider {
-            width: 50px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #d4a017, transparent);
-            margin: 5px auto 0;
+            padding: 6px 24px 8px;
+            border-top: 1px solid rgba(212,160,23,0.45);
+            gap: 2px;
+            min-height: 0;
+            position: relative;
         }
 
         .postcard-poem {
-            flex: 1;
-            padding: 10px 6px;
             text-align: center;
-            font-size: 0.88rem;
-            line-height: 1.8;
+            font-size: 0.92rem;
+            line-height: 1.65;
             color: #4a3000;
             font-style: italic;
             font-family: 'Dancing Script', 'Noto Serif TC', cursive;
             font-weight: 600;
             letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-top: 1px solid rgba(212,160,23,0.35);
-            border-bottom: 1px solid rgba(212,160,23,0.35);
-            overflow: hidden;
+            max-width: 88%;
         }
 
         .postcard-author {
-            text-align: right;
-            font-size: 0.78rem;
+            text-align: center;
+            font-size: 0.76rem;
             color: #7a5800;
-            margin: 6px 0 4px;
             font-weight: 600;
-            flex-shrink: 0;
             font-family: 'Dancing Script', 'Noto Serif TC', cursive;
         }
 
         .postcard-footer {
-            text-align: center;
-            font-size: 0.56rem;
-            color: #b8860b;
-            letter-spacing: 2px;
-            flex-shrink: 0;
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            font-size: 0.5rem;
+            color: #c8a840;
+            letter-spacing: 1.5px;
             font-family: 'Playfair Display', serif;
-            padding-top: 5px;
-            border-top: 1px dashed rgba(212,160,23,0.3);
         }
 
         /* ── Photo adjustment modal ── */
@@ -1225,28 +1163,20 @@
             }
 
             .postcard-container {
-                flex-direction: column;
-                aspect-ratio: auto;
                 max-width: 100%;
             }
 
             .postcard-photos {
-                width: 100%;
-                height: 55vw;
-                max-height: 300px;
-            }
-
-            .postcard-info {
-                padding: 12px 14px 10px;
-            }
-
-            .postcard-header {
-                padding-right: 48px;
+                padding: 8px 8px 4px 8px;
+                gap: 4px;
             }
 
             .postcard-poem {
                 font-size: 0.82rem;
-                padding: 8px 4px;
+            }
+
+            .postcard-text-area {
+                padding: 5px 14px 7px;
             }
 
             .postcard-assistant-link {
@@ -2073,14 +2003,8 @@
                             <div class="postcard-photo-label" id="postcard-label-2"></div>
                         </div>
                     </div>
-                    <!-- Right: info panel -->
-                    <div class="postcard-info">
-                        <div class="postcard-stamp"></div>
-                        <div class="postcard-header">
-                            <div class="postcard-header-title">看見八里</div>
-                            <div class="postcard-header-date">2026 · VIII · XI</div>
-                            <div class="postcard-header-divider"></div>
-                        </div>
+                    <!-- Bottom: poem + author -->
+                    <div class="postcard-text-area">
                         <div class="postcard-poem" id="postcard-poem"></div>
                         <div class="postcard-author" id="postcard-author"></div>
                         <div class="postcard-footer">2026 新北教育豐年祭 ── 看見八里</div>
