@@ -1,0 +1,2113 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>看見八里：用 AI 穿梭不同視角，探索時間與世界 | 2026 新北教育豐年祭</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@500;600;700&family=Noto+Serif+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" async="" src="//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"></script><script type="text/javascript" async="" src="//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"></script><script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #1a202c;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #4299e1 100%);
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            max-width: 1200px;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            line-height: 1.8;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .quick-nav {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .quick-nav-btn {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .quick-nav-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 20px 20px 0 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 20;
+            padding: 3rem 1.5rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #1a365d;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #d69e2e, #4299e1);
+            border-radius: 2px;
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #d69e2e, #4299e1);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .timeline-content {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            width: calc(50% - 40px);
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 2px solid rgba(66,153,225,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #d69e2e, #b7791f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 4px 10px rgba(214,158,46,0.4);
+            border: 4px solid white;
+        }
+
+        .timeline-time {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #d69e2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-details {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .detail-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-title {
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .detail-content {
+            color: #4a5568;
+            line-height: 1.7;
+            padding-left: 1.5rem;
+        }
+
+        .detail-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .detail-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .detail-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #4299e1;
+            font-weight: 700;
+        }
+
+        .toggle-btn {
+            background: linear-gradient(135deg, #4299e1, #3182ce);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .toggle-btn:hover {
+            background: linear-gradient(135deg, #3182ce, #2c5282);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(66,153,225,0.3);
+        }
+
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .knowledge-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 2px solid rgba(66,153,225,0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .knowledge-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .knowledge-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        .knowledge-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .knowledge-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+
+        .knowledge-content {
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        .task-list {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .task-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #4299e1;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .task-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .task-item:hover {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transform: translateX(5px);
+        }
+
+        .task-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #4299e1;
+            border-radius: 6px;
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .task-checkbox:hover {
+            background: rgba(66,153,225,0.1);
+        }
+
+        .task-checkbox.checked {
+            background: #4299e1;
+            position: relative;
+        }
+
+        .task-checkbox.checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: 700;
+        }
+
+        .task-text {
+            flex: 1;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .task-text.completed {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .quotes-section {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .quote-card {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 2px solid rgba(255,255,255,0.2);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.6s ease;
+        }
+
+        .quote-card.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+
+        .postcard-section {
+            background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .upload-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .upload-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .upload-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        .upload-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-subtitle {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 1rem;
+        }
+
+        .upload-box {
+            border: 3px dashed #cbd5e0;
+            border-radius: 12px;
+            padding: 3rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f7fafc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-box:hover {
+            border-color: #4299e1;
+            border-style: solid;
+            background: #edf2f7;
+            box-shadow: 0 0 20px rgba(66,153,225,0.2);
+        }
+
+        .upload-box.has-image {
+            padding: 0;
+            border-style: solid;
+            border-color: #4299e1;
+        }
+
+        .upload-preview {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .upload-preview.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .upload-placeholder {
+            color: #a0aec0;
+            font-size: 3rem;
+        }
+
+        .upload-text {
+            color: #4a5568;
+            margin-top: 1rem;
+        }
+
+        .upload-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-family: 'Noto Sans TC', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .upload-input:focus {
+            outline: none;
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66,153,225,0.1);
+        }
+
+        .poem-input-area {
+            max-width: 800px;
+            margin: 3rem auto;
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .poem-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+
+        .poem-description {
+            color: #718096;
+            margin-bottom: 1rem;
+        }
+
+        .poem-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            resize: vertical;
+            min-height: 120px;
+            transition: all 0.3s ease;
+        }
+
+        .poem-textarea:focus {
+            outline: none;
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66,153,225,0.1);
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, #d69e2e, #b7791f);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 400px;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 4px 10px rgba(214,158,46,0.3);
+        }
+
+        .generate-btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .generate-btn:not(:disabled):hover {
+            background: linear-gradient(135deg, #b7791f, #975a16);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(214,158,46,0.4);
+        }
+
+        .btn-hint {
+            text-align: center;
+            color: #718096;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .postcard-preview {
+            max-width: 900px;
+            margin: 3rem auto;
+            display: none;
+        }
+
+        .postcard-preview.show {
+            display: block;
+            animation: fadeInScale 0.6s ease;
+        }
+
+        .postcard-container {
+            background: linear-gradient(160deg, #fffdf0 0%, #fff9e4 60%, #fffdf5 100%);
+            border-radius: 4px;
+            padding: 22px 22px 18px 22px;
+            border: 5px solid #d4a017;
+            box-shadow:
+                0 0 0 2px #f5d060,
+                0 0 0 5px rgba(212,160,23,0.25),
+                0 15px 50px rgba(0,0,0,0.22),
+                inset 0 0 40px rgba(255,220,80,0.06);
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            aspect-ratio: 4/6;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        .postcard-container::before {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border: 1px solid rgba(212,160,23,0.25);
+            border-radius: 2px;
+            pointer-events: none;
+        }
+
+        /* Decorative postmark stamp */
+        .postcard-stamp {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 54px;
+            height: 66px;
+            border: 2.5px solid #d4a017;
+            border-radius: 3px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.45rem;
+            color: #d4a017;
+            letter-spacing: 0.5px;
+            background: rgba(255,255,255,0.6);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .postcard-stamp::before {
+            content: '郵票';
+            font-size: 0.55rem;
+            font-weight: 700;
+            color: #b8860b;
+        }
+
+        .postcard-header {
+            text-align: center;
+            margin-bottom: 14px;
+            flex-shrink: 0;
+            padding-top: 4px;
+        }
+
+        .postcard-header-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #7a4f00;
+            margin-bottom: 3px;
+            letter-spacing: 4px;
+            font-family: 'Playfair Display', 'Noto Serif TC', serif;
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
+        }
+
+        .postcard-header-date {
+            font-size: 0.7rem;
+            color: #b8860b;
+            letter-spacing: 2px;
+            font-family: 'Playfair Display', serif;
+            opacity: 0.85;
+        }
+
+        .postcard-header-divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4a017, transparent);
+            margin: 6px auto 0;
+        }
+
+        .postcard-photos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 6px;
+            margin-bottom: 12px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .postcard-photo {
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18), 0 0 0 1px rgba(212,160,23,0.2);
+            position: relative;
+        }
+
+        .postcard-photo.large {
+            grid-row: 1 / 3;
+        }
+
+        .postcard-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .postcard-photo-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 20px 8px 6px 8px;
+            font-size: 0.65rem;
+            letter-spacing: 0.8px;
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        .postcard-poem {
+            background: transparent;
+            border-top: 1px solid rgba(212,160,23,0.4);
+            border-bottom: 1px solid rgba(212,160,23,0.4);
+            padding: 10px 18px;
+            text-align: center;
+            font-size: 0.92rem;
+            line-height: 1.75;
+            color: #4a3000;
+            font-style: italic;
+            margin-bottom: 8px;
+            flex-shrink: 0;
+            font-family: 'Dancing Script', 'Noto Serif TC', cursive;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .postcard-author {
+            text-align: right;
+            font-size: 0.82rem;
+            color: #7a5800;
+            margin-bottom: 4px;
+            padding-right: 10px;
+            font-weight: 600;
+            flex-shrink: 0;
+            font-family: 'Dancing Script', 'Noto Serif TC', cursive;
+        }
+
+        .postcard-footer {
+            text-align: center;
+            font-size: 0.62rem;
+            color: #b8860b;
+            letter-spacing: 2px;
+            flex-shrink: 0;
+            font-family: 'Playfair Display', serif;
+            padding-top: 6px;
+            border-top: 1px dashed rgba(212,160,23,0.3);
+            margin-top: 4px;
+        }
+
+        /* Activity assistant link inside postcard section */
+        .postcard-assistant-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin: 2.5rem auto 0;
+            max-width: 500px;
+            background: linear-gradient(135deg, #fff8e1, #fffde7);
+            border: 2px solid #f6c73a;
+            border-radius: 16px;
+            padding: 1.1rem 2rem;
+            text-decoration: none;
+            color: #7a4f00;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 4px 16px rgba(212,160,23,0.25);
+            transition: all 0.3s ease;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .postcard-assistant-link:hover {
+            background: linear-gradient(135deg, #fef3c7, #fff8e1);
+            border-color: #d4a017;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(212,160,23,0.35);
+            color: #5a3500;
+        }
+
+        .postcard-assistant-icon {
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .postcard-assistant-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .postcard-assistant-text span:first-child {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .postcard-assistant-text span:last-child {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #a07030;
+            opacity: 0.85;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #4299e1, #3182ce);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 300px;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 4px 10px rgba(66,153,225,0.3);
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #3182ce, #2c5282);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(66,153,225,0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .info-section {
+            background: #f7fafc;
+            padding: 4rem 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+
+        .info-text {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .kuse-branding {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            margin-top: 3rem;
+        }
+
+        .kuse-branding a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .kuse-branding a:hover {
+            color: #1a365d;
+            background: rgba(66,153,225,0.1);
+        }
+
+        .kuse-branding svg {
+            height: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .kuse-branding a:hover svg {
+            transform: scale(1.1);
+        }
+
+        /* Floating AI Assistant Button */
+        .ai-assistant-fab {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 0.9rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5), 0 2px 6px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            animation: fabPulse 2.5s ease-in-out infinite;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .ai-assistant-fab:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6), 0 4px 10px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .ai-assistant-fab .fab-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        .ai-assistant-fab .fab-text {
+            white-space: nowrap;
+        }
+
+        @keyframes fabPulse {
+            0%, 100% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5), 0 2px 6px rgba(0,0,0,0.15); }
+            50% { box-shadow: 0 6px 28px rgba(102, 126, 234, 0.7), 0 2px 8px rgba(0,0,0,0.2); }
+        }
+
+        @media (max-width: 768px) {
+            .ai-assistant-fab {
+                bottom: 18px;
+                right: 18px;
+                padding: 0.75rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+            }
+
+            .timeline-icon {
+                left: 30px;
+            }
+
+            .upload-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .postcard-container {
+                padding: 14px 14px 16px 14px;
+                max-width: 100%;
+            }
+
+            .postcard-assistant-link {
+                margin: 1.5rem 1rem 0;
+                padding: 0.9rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .quick-nav {
+                flex-direction: column;
+            }
+
+            .quick-nav-btn {
+                width: 100%;
+            }
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}</style><style id="kgp-selected-style">
+  [data-kgp-selected]::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 4px;
+    outline: 3px solid #FF6B35 !important;
+    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.3), 0 0 10px rgba(255, 107, 53, 0.4) !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+  [data-kgp-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-kgp-selected],
+  img[data-kgp-hover-selected],
+  [data-kgp-hover-selected],
+  [item-kgp-click-selected],
+  [item-kgp-selected] {
+    border: 3px solid #FF6B35 !important;
+    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.3), 0 0 15px rgba(255, 107, 53, 0.5) !important;
+    border-radius: 4px;
+  }
+
+  [data-kgp-hover-selected]::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 2px;
+    border-radius: 4px;
+    outline: 2px solid #FFA366 !important;
+    box-shadow: 0 0 0 1px rgba(255, 163, 102, 0.3), 0 0 8px rgba(255, 163, 102, 0.4) !important;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  [data-kgp-hover-selected] {
+    position: relative;
+    outline: none;
+  }
+</style><script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script><script src="https://unpkg.com/html-docx-js/dist/html-docx.js"></script><script src="https://cdn.jsdelivr.net/npm/ua-parser-js@1.0.2/src/ua-parser.min.js"></script><style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.visible{visibility:visible}</style><style id="kgp-selected-style">
+  [data-kgp-selected]::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 4px;
+    outline: 3px solid #FF6B35 !important;
+    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.3), 0 0 10px rgba(255, 107, 53, 0.4) !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+  [data-kgp-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-kgp-selected],
+  img[data-kgp-hover-selected],
+  [data-kgp-hover-selected],
+  [item-kgp-click-selected],
+  [item-kgp-selected] {
+    border: 3px solid #FF6B35 !important;
+    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.3), 0 0 15px rgba(255, 107, 53, 0.5) !important;
+    border-radius: 4px;
+  }
+
+  [data-kgp-hover-selected]::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 2px;
+    border-radius: 4px;
+    outline: 2px solid #FFA366 !important;
+    box-shadow: 0 0 0 1px rgba(255, 163, 102, 0.3), 0 0 8px rgba(255, 163, 102, 0.4) !important;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  [data-kgp-hover-selected] {
+    position: relative;
+    outline: none;
+  }
+</style><style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.visible{visibility:visible}</style><style id="kgp-selected-style">
+  [data-kgp-selected]::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 4px;
+    outline: 3px solid #FF6B35 !important;
+    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.3), 0 0 10px rgba(255, 107, 53, 0.4) !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+  [data-kgp-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-kgp-selected],
+  img[data-kgp-hover-selected],
+  [data-kgp-hover-selected],
+  [item-kgp-click-selected],
+  [item-kgp-selected] {
+    border: 3px solid #FF6B35 !important;
+    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.3), 0 0 15px rgba(255, 107, 53, 0.5) !important;
+    border-radius: 4px;
+  }
+
+  [data-kgp-hover-selected]::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 2px;
+    border-radius: 4px;
+    outline: 2px solid #FFA366 !important;
+    box-shadow: 0 0 0 1px rgba(255, 163, 102, 0.3), 0 0 8px rgba(255, 163, 102, 0.4) !important;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  [data-kgp-hover-selected] {
+    position: relative;
+    outline: none;
+  }
+</style><style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.visible{visibility:visible}</style><style id="kgp-selected-style">
+  [data-kgp-selected]::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 4px;
+    outline: 3px solid #FF6B35 !important;
+    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.3), 0 0 10px rgba(255, 107, 53, 0.4) !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+  [data-kgp-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-kgp-selected],
+  img[data-kgp-hover-selected],
+  [data-kgp-hover-selected],
+  [item-kgp-click-selected],
+  [item-kgp-selected] {
+    border: 3px solid #FF6B35 !important;
+    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.3), 0 0 15px rgba(255, 107, 53, 0.5) !important;
+    border-radius: 4px;
+  }
+
+  [data-kgp-hover-selected]::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 2px;
+    border-radius: 4px;
+    outline: 2px solid #FFA366 !important;
+    box-shadow: 0 0 0 1px rgba(255, 163, 102, 0.3), 0 0 8px rgba(255, 163, 102, 0.4) !important;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  [data-kgp-hover-selected] {
+    position: relative;
+    outline: none;
+  }
+</style><style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.visible{visibility:visible}</style><style id="kgp-selected-style">
+  [data-kgp-selected]::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 4px;
+    outline: 3px solid #FF6B35 !important;
+    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.3), 0 0 10px rgba(255, 107, 53, 0.4) !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+  [data-kgp-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-kgp-selected],
+  img[data-kgp-hover-selected],
+  [data-kgp-hover-selected],
+  [item-kgp-click-selected],
+  [item-kgp-selected] {
+    border: 3px solid #FF6B35 !important;
+    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.3), 0 0 15px rgba(255, 107, 53, 0.5) !important;
+    border-radius: 4px;
+  }
+
+  [data-kgp-hover-selected]::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 2px;
+    border-radius: 4px;
+    outline: 2px solid #FFA366 !important;
+    box-shadow: 0 0 0 1px rgba(255, 163, 102, 0.3), 0 0 8px rgba(255, 163, 102, 0.4) !important;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  [data-kgp-hover-selected] {
+    position: relative;
+    outline: none;
+  }
+</style></head>
+<body>
+    <!-- Floating AI Assistant Button -->
+    <a href="https://app.edcafe.ai/chatbots/69d6745d71c4a7ad15dd7dcb" target="_blank" rel="noopener noreferrer" class="ai-assistant-fab" title="點擊向活動助理老師發問">
+        <span class="fab-icon">🤖</span>
+        <span class="fab-text">活動助理老師</span>
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="">
+        <div class="hero-content" style="width: 617.458px; height: 495.681px;">
+            <h1 class="hero-title">看見八里</h1>
+            <p class="hero-subtitle" style="">用 AI 穿梭不同視角，探索時間的世界</p>
+            <p class="hero-description" style="">
+                2026 新北教育豐年季<span style="-webkit-text-size-adjust: 100%;">｜第三組 自然科技創藝組<br></span><span style="-webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%;">從史前文明到當代生態，從微觀細節到宏觀視野<br></span><span style="-webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%;">一場融合歷史、科技與環境的深度學習之旅</span></p>
+            <p></p>
+            <div class="quick-nav">
+                <a href="#stage0" class="quick-nav-btn">🎤 開幕式</a>
+                <a href="#stage1" class="quick-nav-btn">🔥 史前之火</a>
+                <a href="#stage2" class="quick-nav-btn">💡 永續之光</a>
+                <a href="#stage3" class="quick-nav-btn" style="">🔍 河口解碼</a>
+                <a href="#stage4" class="quick-nav-btn">🌙 58度之夜</a>
+                <a href="#stage5" class="quick-nav-btn">🎤 閉幕展演</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <div class="content-section">
+        <!-- Timeline Section -->
+        <section id="timeline-section" style="padding: 3rem 0;">
+            <h2 class="section-title">📅 活動時間軸</h2>
+
+            <!-- Day 1 Label -->
+            <div style="text-align:center; margin-bottom: 2rem;">
+                <span style="display:inline-block; background: linear-gradient(135deg,#1a365d,#4299e1); color:white; padding:0.5rem 2rem; border-radius:50px; font-weight:700; font-size:1.1rem; letter-spacing:0.05em;">📍 Day 1｜開幕 × 走讀 × 創作</span>
+            </div>
+
+            <div class="timeline">
+                <!-- Stage 0: 開幕式 -->
+                <div class="timeline-item visible" id="stage0">
+                    <div class="timeline-icon">🎤</div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">09:00</div>
+                        <div class="timeline-title">開幕式</div>
+                        <div class="timeline-description">
+                            於十三行博物館舉行開幕式，邀請長官致詞，並安排 TED 短講，由名師分享教育理念與探究精神，為兩天的學習旅程揭開序幕。
+                        </div>
+                        <div class="timeline-details" style="display: none;">
+                            <div class="detail-section">
+                                <div class="detail-title">📍 地點</div>
+                                <div class="detail-content">十三行博物館</div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🎯 議程</div>
+                                <ul class="detail-list">
+                                    <li>長官致詞</li>
+                                    <li>TED 短講：名師分享教育探究精神</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="toggle-btn" onclick="toggleDetails(this)">展開詳細內容 ▼</button>
+                    </div>
+                </div>
+
+                <!-- Stage 1 -->
+                <div class="timeline-item visible" id="stage1">
+                    <div class="timeline-icon">🔥</div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">13:00–14:30</div>
+                        <div class="timeline-title">史前之火：十三行走讀啟程</div>
+                        <div class="timeline-description">
+                            下午課程自十三行博物館展區展開，學員透過導覽與自主觀察，認識八里地區的史前文化與人類生活痕跡，從出土文物與空間展示中理解早期人類如何依環境而生，並逐步引導學員思考「人與環境的關係」；過程中也將結合任務引導與情境提問，讓學員在觀察中蒐集線索，為後續的永續學習與解謎活動鋪陳脈絡。
+                        </div>
+                        <div class="timeline-details" style="display: none;">
+                            <div class="detail-section">
+                                <div class="detail-title">📍 地點</div>
+                                <div class="detail-content">十三行博物館</div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🎯 探索重點</div>
+                                <ul class="detail-list">
+                                    <li>沙丘建築開場：十三行博物館外觀、鯨背沙丘，象徵時間的堆積與文明的累積</li>
+                                    <li>文物與微觀觀察：觀察貝殼等自然資源相關文物，並結合微觀展示如紋理、細節</li>
+                                    <li>尋找「十三行人如何改變當時地貌」的線索（例如樹林減少、生態改變）</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🏺 關鍵文物</div>
+                                <ul class="detail-list">
+                                    <li>人面陶罐：十三行文化的代表性文物</li>
+                                    <li>貝塚：反映當時的飲食與環境利用</li>
+                                    <li>煉鐵相關文物：展現十三行人的技術成就</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">💡 核心概念</div>
+                                <div class="detail-content">
+                                    十三行文化最著名的就是「煉鐵技術」，要煉鐵需要極高溫的火，要生火就需要砍伐大量的木材。請學員思考：當時的人類活動如何改變了環境？這與我們今天面對的環境議題有什麼關聯？
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🎬 互動提示</div>
+                                <div class="detail-content">
+                                    使用「八里時光 AI 探索助手」拍攝文物細節，並提問「這個文物告訴我們什麼樣的生活方式？」引導學員從物質文化理解人與環境的互動。
+                                </div>
+                            </div>
+                        </div>
+                        <button class="toggle-btn" onclick="toggleDetails(this)">展開詳細內容 ▼</button>
+                    </div>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="timeline-item visible" id="stage2">
+                    <div class="timeline-icon">💡</div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">14:30–15:30</div>
+                        <div class="timeline-title">永續之光：環境導覽轉場</div>
+                        <div class="timeline-description">
+                            接續前段走讀，學員移動至「挖子尾自然保留區」，由專業人員進行導覽，介紹濕地生態，並觀察溼地環境，接著移動到永續環境教育中心了解氣候變遷與在地永續行動，讓學員從歷史脈絡轉入當代環境議題，理解人類活動對自然的影響，並建立從「過去到現在」的整體視角。
+                        </div>
+                        <div class="timeline-details" style="display: none;">
+                            <div class="detail-section">
+                                <div class="detail-title">📍 地點</div>
+                                <div class="detail-content">挖子尾自然保留區 → 永續環境教育中心</div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🌿 生態特色</div>
+                                <ul class="detail-list">
+                                    <li>面積廣達三十公頃，是台北北部規模最大的紅樹林濕地</li>
+                                    <li>全球水筆仔純林分布的最北端，具重要的生物地理與保育價值</li>
+                                    <li>區內紅樹林與馬鞍藤、蘆葦等河口植物交織出多樣的濕地植被</li>
+                                    <li>提供招潮蟹、彈塗魚、燒酒螺、藤壺等底棲無脊椎動物及多種淡水與海水魚類棲息</li>
+                                    <li>秋冬季候鳥的重要停歇與越冬地點，常見水鳥、鷺類與鸕鶿等</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🔬 水筆仔的奧秘</div>
+                                <div class="detail-content">
+                                    水筆仔具有「胎生苗」特殊構造，種子在母樹上就開始發芽，長成小苗後才掉落泥灘地，這是為了適應潮間帶環境的演化結果。招潮蟹、彈塗魚也有特殊構造，能在半鹹水、缺氧的泥灘地生存，展現生命的適應力。
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🏛️ 永續環境教育中心</div>
+                                <ul class="detail-list">
+                                    <li>綠建築設計，本身就是永續概念的展現</li>
+                                    <li>常設有濕地生態、節能減碳的展覽</li>
+                                    <li>設有塔樓可遠眺八里地貌</li>
+                                    <li>了解氣候變遷與在地永續行動</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">⚠️ 注意事項</div>
+                                <ul class="detail-list">
+                                    <li>八里河畔秋冬季海風強勁，且缺乏大型遮蔽物，務必準備防風外套與帽子</li>
+                                    <li>建議準備雙筒望遠鏡交給各組觀察沙洲上的螃蟹或遠處的水鳥</li>
+                                    <li>使用「八里時光 AI 探索助手」進行生態提問與辨識</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">💡 核心概念</div>
+                                <div class="detail-content">
+                                    從十三行人的「開發環境」轉到濕地動植物的「適應環境」。對比古人改變地貌與現代生物適應環境的差異，思考人類與自然的關係應該如何平衡。
+                                </div>
+                            </div>
+                        </div>
+                        <button class="toggle-btn" onclick="toggleDetails(this)">展開詳細內容 ▼</button>
+                    </div>
+                </div>
+
+                <!-- Stage 3 -->
+                <div class="timeline-item visible" id="stage3">
+                    <div class="timeline-icon">🔍</div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">15:30–17:00</div>
+                        <div class="timeline-title">河口解碼：科技探究任務</div>
+                        <div class="timeline-description">
+                            在永續環境教育中心內展開課程實作，學員透過分組合作，結合數位工具與觀察紀錄，進行以河口環境為主題的解謎任務，從蒐集到的線索中進行推理與判讀，逐步解開各項環境議題背後的意義；整體歷程強調參與、探究與連結，讓學員在真實場域中理解永續的重要性，並完成一場融合文化、科技與環境的深度學習體驗。
+                        </div>
+                        <div class="timeline-details" style="display: none;">
+                            <div class="detail-section">
+                                <div class="detail-title">📍 地點</div>
+                                <div class="detail-content">永續環境教育中心</div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🎯 解謎任務設計</div>
+                                <div class="detail-content">
+                                    學員化身為「跨時空生態調查員」，利用在十三行找到的「古人生活線索」，比對挖子尾看到的「現代濕地危機（如垃圾淤積、氣候變遷）」，來解開最終的永續密碼。
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🤖 AI 創作流程</div>
+                                <ul class="detail-list">
+                                    <li>上傳三張觀察照片：微觀視角、肉眼視角、感動瞬間</li>
+                                    <li>與 AI 共同創作詩句或文字</li>
+                                    <li>生成專屬的「八里明信片」</li>
+                                    <li>分享與反思：從觀察到創作的學習轉化</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🌍 永續議題探討</div>
+                                <ul class="detail-list">
+                                    <li>古今對照：十三行人的環境改變 vs. 現代的環境保護</li>
+                                    <li>濕地危機：垃圾淤積、棲地破壞、氣候變遷影響</li>
+                                    <li>永續行動：個人可以做什麼？社區可以做什麼？</li>
+                                    <li>綠建築概念：從永續環境教育中心學習節能減碳</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🎬 拍攝重點</div>
+                                <ul class="detail-list">
+                                    <li>塔樓遠眺與空拍俯瞰：新北市永續環境教育中心塔樓遠景與空拍上升畫面</li>
+                                    <li>AI 成果展：上傳觀察素材，生成明信片與 AI 詩句</li>
+                                    <li>呈現不同視角下的八里地貌</li>
+                                    <li>呈現從觀察到創作的學習轉化</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="toggle-btn" onclick="toggleDetails(this)">展開詳細內容 ▼</button>
+                    </div>
+                </div>
+
+                <!-- Stage 4: 58度之夜 -->
+                <div class="timeline-item visible" id="stage4">
+                    <div class="timeline-icon">🌙</div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">19:30–21:30</div>
+                        <div class="timeline-title">58度之夜：創作與整合</div>
+                        <div class="timeline-description">
+                            結束白天的走讀與探究後，晚上進入創作整合時段。各組在林英斌老師與張宇帆老師的指導下，進行聲光與音樂設計，整合白天蒐集的微觀影像、光影效果與 AI 音樂，目標是當晚完成可展演的作品雛形。
+                        </div>
+                        <div class="timeline-details" style="display: none;">
+                            <div class="detail-section">
+                                <div class="detail-title">✨ 定位</div>
+                                <div class="detail-content">輕鬆 × 創作 × 高質感產出</div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🎨 指導老師</div>
+                                <ul class="detail-list">
+                                    <li>林英斌老師：聲光設計</li>
+                                    <li>張宇帆老師：音樂設計</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🎯 各組整合項目</div>
+                                <ul class="detail-list">
+                                    <li>微觀影像素材整理</li>
+                                    <li>光影效果設計</li>
+                                    <li>AI 音樂生成與搭配</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🏁 目標</div>
+                                <div class="detail-content">當晚完成「可展演作品雛形」，為隔日閉幕展演做準備。</div>
+                            </div>
+                        </div>
+                        <button class="toggle-btn" onclick="toggleDetails(this)">展開詳細內容 ▼</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 2 Label -->
+            <div style="text-align:center; margin: 3rem 0 2rem 0;">
+                <span style="display:inline-block; background: linear-gradient(135deg,#276749,#48bb78); color:white; padding:0.5rem 2rem; border-radius:50px; font-weight:700; font-size:1.1rem; letter-spacing:0.05em;">📍 Day 2｜排演 × 展演</span>
+            </div>
+
+            <div class="timeline">
+                <!-- Stage 5: 排演 -->
+                <div class="timeline-item visible" id="stage5">
+                    <div class="timeline-icon">🎬</div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">10:00–12:00</div>
+                        <div class="timeline-title">☀️ 上午：彈性調整 ＋ 成果展排演</div>
+                        <div class="timeline-description">
+                            考量前一晚創作進度，10:00 集合，進行成果展排演，確認上台順序與展演流程，讓各組有充分時間調整與練習。
+                        </div>
+                        <div class="timeline-details" style="display: none;">
+                            <div class="detail-section">
+                                <div class="detail-title">🕙 集合時間</div>
+                                <div class="detail-content">10:00（考量前一晚創作時間，彈性調整）</div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🎯 排演內容</div>
+                                <ul class="detail-list">
+                                    <li>上台順序確認</li>
+                                    <li>展演流程演練</li>
+                                    <li>技術測試（聲光、投影等）</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="toggle-btn" onclick="toggleDetails(this)">展開詳細內容 ▼</button>
+                    </div>
+                </div>
+
+                <!-- Stage 6: 午餐 -->
+                <div class="timeline-item visible" id="stage6">
+                    <div class="timeline-icon">🍽️</div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">12:00</div>
+                        <div class="timeline-title">🍽️ 午餐</div>
+                        <div class="timeline-description">
+                            於八里活動中心用餐，補充體力，準備下午的閉幕展演。
+                        </div>
+                        <div class="timeline-details" style="display: none;">
+                            <div class="detail-section">
+                                <div class="detail-title">📍 地點</div>
+                                <div class="detail-content">八里活動中心</div>
+                            </div>
+                        </div>
+                        <button class="toggle-btn" onclick="toggleDetails(this)">展開詳細內容 ▼</button>
+                    </div>
+                </div>
+
+                <!-- Stage 7: 閉幕展演 -->
+                <div class="timeline-item visible" id="stage7">
+                    <div class="timeline-icon">🏆</div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">13:00–閉幕</div>
+                        <div class="timeline-title">🎤 下午：閉幕式 ＆ 成果展演</div>
+                        <div class="timeline-description">
+                            13:00 集合，13:30 閉幕式正式開始。各組輪流上台展演，每組約 10 分鐘，呈現兩天學習與創作的精華成果。
+                        </div>
+                        <div class="timeline-details" style="display: none;">
+                            <div class="detail-section">
+                                <div class="detail-title">⏰ 時間安排</div>
+                                <ul class="detail-list">
+                                    <li>13:00 集合</li>
+                                    <li>13:30 閉幕式開始</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🎯 各組展演</div>
+                                <div class="detail-content">每組約 10 分鐘，呈現融合歷史、科技與環境的深度學習成果。</div>
+                            </div>
+                        </div>
+                        <button class="toggle-btn" onclick="toggleDetails(this)">展開詳細內容 ▼</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Knowledge Base Section -->
+        <section id="knowledge-section" style="padding: 3rem 0; background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);">
+            <h2 class="section-title">📚 八里知識庫</h2>
+            <div class="knowledge-grid">
+                <!-- History Card -->
+                <div class="knowledge-card visible">
+                    <div class="knowledge-icon">🏺</div>
+                    <div class="knowledge-title">文史篇</div>
+                    <div class="knowledge-content" style="max-height: 200px; overflow: hidden;" id="history-content">
+                        <p style="margin-bottom: 1rem;"><strong>史前文化</strong></p>
+                        <p style="margin-bottom: 1rem;">自新石器時代約七千年前的八里大坌坑文化起便有人類活動，區內現存多處重要史前遺址，包括大坌坑、訊塘埔、圓山以及以金屬器時代聞名的十三行遺址（距今約2000至400年）。</p>
+                        <p style="margin-bottom: 1rem;">十三行遺址於2006年列為國定考古遺址，是台灣首度發現「金屬器時代」的遺址，證明當時的原住民已經掌握了煉鐵技術，並且有豐富的對外貿易活動。</p>
+                        <p style="margin-bottom: 1rem;"><strong>大航海時代</strong></p>
+                        <p style="margin-bottom: 1rem;">1628年西班牙傳教士抵達淡水，記載此地原住民部落名為Parigon（八里坌社）。荷蘭人驅逐西班牙人後有效控制八里地區，主要的社群「八里坌社」平均人口數約在一百卅人左右（三十戶）。</p>
+                        <p style="margin-bottom: 1rem;"><strong>清代歷史</strong></p>
+                        <p style="margin-bottom: 1rem;">1683年清軍入台後，八里成為軍事要衝。1790年（清乾隆年間）升格為正口，成為北台灣首座官方港口，與福建泉州、福州等地貿易繁盛，後因河道淤塞而衰退。清代亦留下八里天后宮、八里大眾廟、八里西龍巖等歷史寺廟。</p>
+                    </div>
+                    <button class="toggle-btn" onclick="toggleKnowledge('history')">展開完整內容 ▼</button>
+                </div>
+
+                <!-- Ecology Card -->
+                <div class="knowledge-card visible">
+                    <div class="knowledge-icon">🌿</div>
+                    <div class="knowledge-title">生態篇</div>
+                    <div class="knowledge-content" style="max-height: 200px; overflow: hidden;" id="ecology-content">
+                        <p style="margin-bottom: 1rem;"><strong>挖子尾自然保留區</strong></p>
+                        <p style="margin-bottom: 1rem;">位於淡水河左岸河口，佔地約三十公頃，是台北北部規模最大的紅樹林濕地。1994年由行政院農委會公告為自然保留區，緊臨觀音山地，周圍有大屯山系和觀音山系形成天然屏障。</p>
+                        <p style="margin-bottom: 1rem;"><strong>水筆仔</strong></p>
+                        <p style="margin-bottom: 1rem;">全球水筆仔純林分布的最北端，具重要的生物地理與保育價值。水筆仔具有「胎生苗」特殊構造，種子在母樹上就開始發芽，長成小苗後才掉落泥灘地。</p>
+                        <p style="margin-bottom: 1rem;"><strong>動植物</strong></p>
+                        <p style="margin-bottom: 1rem;">紅樹林與馬鞍藤、蘆葦等河口植物交織出多樣的濕地植被，提供招潮蟹、彈塗魚、燒酒螺、藤壺等底棲無脊椎動物及多種淡水與海水魚類棲息。招潮蟹、彈塗魚具有特殊構造適應半鹹水、缺氧的泥灘地。</p>
+                        <p style="margin-bottom: 1rem;"><strong>候鳥</strong></p>
+                        <p>秋冬季候鳥的重要停歇與越冬地點，常見水鳥、鷺類與鸕鶿等。區內設有自行車道與解說牌，開放民眾免費進入，兼具教育、觀光與生態研究功能。</p>
+                    </div>
+                    <button class="toggle-btn" onclick="toggleKnowledge('ecology')">展開完整內容 ▼</button>
+                </div>
+
+                <!-- Attractions Card -->
+                <div class="knowledge-card visible">
+                    <div class="knowledge-icon">🗺️</div>
+                    <div class="knowledge-title">景點篇</div>
+                    <div class="knowledge-content" style="max-height: 200px; overflow: hidden;" id="attractions-content">
+                        <p style="margin-bottom: 1rem;"><strong>十三行博物館</strong></p>
+                        <p style="margin-bottom: 1rem;">台灣第一座考古博物館，建築本身隱喻出海口與時光遺跡，內有VR解密、考古體驗與投射沙坑，著名打卡點「一線天」階梯。</p>
+                        <p style="margin-bottom: 1rem;"><strong>新北考古公園</strong></p>
+                        <p style="margin-bottom: 1rem;">仿古茅草屋呈現史前生活，步行三分鐘可達十三行博物館。公園內完全沒有一般公園的溜滑梯、搖搖馬或盪鞦韆等遊具，取而代之的是遠古的茅草屋，復刻了遠古時期的「茅草屋」聚落與十三行人的生活場景。</p>
+                        <p style="margin-bottom: 1rem;"><strong>永續環境教育中心</strong></p>
+                        <p style="margin-bottom: 1rem;">綠建築，常設濕地生態、節能減碳展覽，設有塔樓可遠眺。</p>
+                        <p style="margin-bottom: 1rem;"><strong>八里左岸</strong></p>
+                        <p style="margin-bottom: 1rem;">八里左岸水岸步道與自行車道全長約4公里，串聯渡船頭、老榕碉堡、左岸公園一直到挖子尾與十三行，被紅樹林包圍的綠色隧道，可與對岸淡水、大屯山及觀音山遙望。</p>
+                        <p style="margin-bottom: 1rem;"><strong>其他景點</strong></p>
+                        <p>卡滋爆米花觀光工廠、八里左岸漫步廣場翠堡活動區（舊軍事碉堡改造）、商港公園（巨型小藍鯨滑梯）、八里渡船頭公園（彈塗魚巨型攀爬網）、文昌公園（彩虹筆塔）、米倉國小（玩具魔法學院，校園依山傍水，設有樹屋、童玩館與瞭望台）。</p>
+                    </div>
+                    <button class="toggle-btn" onclick="toggleKnowledge('attractions')">展開完整內容 ▼</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tasks Section -->
+        <section id="tasks-section" style="padding: 3rem 0;">
+            <h2 class="section-title">✅ 探索任務</h2>
+            <div class="task-list">
+                <div class="task-item visible">
+                    <div class="task-checkbox" onclick="toggleTask(this)"></div>
+                    <div class="task-text" style="">在十三行博物館尋找「微觀」相關的展示，思考從微小的世界如何觀察環境的改變</div>
+                </div>
+                <div class="task-item visible">
+                    <div class="task-checkbox" onclick="toggleTask(this)"></div>
+                    <div class="task-text" style="">使用 AI 探索助手提問「十三行博館看到的東西，過去是過什麼樣的生活方式？」</div>
+                </div>
+                <div class="task-item visible">
+                    <div class="task-checkbox" onclick="toggleTask(this)"></div>
+                    <div class="task-text">在挖子尾自然保留區觀察水筆仔的「胎生苗」特徵</div>
+                </div>
+                <div class="task-item visible">
+                    <div class="task-checkbox" onclick="toggleTask(this)"></div>
+                    <div class="task-text" style="">肉眼觀察招潮蟹或彈塗魚，並拿起手機拍下牠們的照片</div>
+                </div>
+                <div class="task-item visible">
+                    <div class="task-checkbox" onclick="toggleTask(this)"></div>
+                    <div class="task-text">在永續環境教育中心找到一個「節能減碳」的展示，並思考如何應用在日常生活中</div>
+                </div>
+                <div class="task-item visible">
+                    <div class="task-checkbox" onclick="toggleTask(this)"></div>
+                    <div class="task-text" style="">完成「跨時空生態調查員」解謎任務，連結古今環境議題</div>
+                </div>
+                <div class="task-item visible">
+                    <div class="task-checkbox" onclick="toggleTask(this)"></div>
+                    <div class="task-text">上傳三張照片（微觀、肉眼、感動瞬間）並與 AI 共創詩句</div>
+                </div>
+                <div class="task-item visible">
+                    <div class="task-checkbox" onclick="toggleTask(this)"></div>
+                    <div class="task-text">生成並下載專屬的「八里明信片」，分享學習成果</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quotes Section -->
+        <section class="quotes-section">
+            <h2 class="section-title" style="color: white;">💬 探索金句</h2>
+            <div class="quote-card visible">
+                <div class="quote-icon">❝</div>
+                <div class="quote-text">在八里，我們從不同視角，看見時間留下的痕跡。</div>
+            </div>
+            <div class="quote-card visible">
+                <div class="quote-icon">❝</div>
+                <div class="quote-text">AI 不只是工具，而是我們理解土地與環境的另一種方式。</div>
+            </div>
+            <div class="quote-card visible">
+                <div class="quote-icon">❝</div>
+                <div class="quote-text">當視角改變，我們也重新看見這個世界。</div>
+            </div>
+        </section>
+
+        <!-- Postcard Section -->
+        <section class="postcard-section">
+            <h2 class="section-title">📸 我的八里明信片</h2>
+            <p style="text-align: center; color: #718096; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                記錄你在八里的觀察與感動，上傳三張照片並創作一句詩，生成專屬的八里明信片
+            </p>
+
+            <!-- Upload Grid -->
+            <div class="upload-grid">
+                <!-- Photo 1 -->
+                <div class="upload-card">
+                    <div class="upload-title">🔬 微觀視角</div>
+                    <div class="upload-subtitle">拍攝物品的細節特寫</div>
+                    <div class="upload-box" id="upload-box-1" onclick="document.getElementById('file-input-1').click()">
+                        <div class="upload-placeholder">📷</div>
+                        <div class="upload-text">點擊上傳或拍照</div>
+                        <img class="upload-preview" id="preview-1" alt="微觀視角">
+                    </div>
+                    <input type="file" id="file-input-1" accept="image/*" style="display: none;" onchange="handleImageUpload(1, event)">
+                    <input type="text" class="upload-input" id="label-1" placeholder="例如：人面陶罐的紋理">
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="upload-card">
+                    <div class="upload-title">👁️ 肉眼視角</div>
+                    <div class="upload-subtitle">眼睛看到的真實影像</div>
+                    <div class="upload-box" id="upload-box-2" onclick="document.getElementById('file-input-2').click()">
+                        <div class="upload-placeholder">📷</div>
+                        <div class="upload-text">點擊上傳或拍照</div>
+                        <img class="upload-preview" id="preview-2" alt="肉眼視角">
+                    </div>
+                    <input type="file" id="file-input-2" accept="image/*" style="display: none;" onchange="handleImageUpload(2, event)">
+                    <input type="text" class="upload-input" id="label-2" placeholder="例如：紅樹林中的招潮蟹">
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="upload-card">
+                    <div class="upload-title">✨ 感動瞬間</div>
+                    <div class="upload-subtitle">遠景或近景，最觸動你的一幕</div>
+                    <div class="upload-box" id="upload-box-3" onclick="document.getElementById('file-input-3').click()">
+                        <div class="upload-placeholder">📷</div>
+                        <div class="upload-text">點擊上傳或拍照</div>
+                        <img class="upload-preview" id="preview-3" alt="感動瞬間">
+                    </div>
+                    <input type="file" id="file-input-3" accept="image/*" style="display: none;" onchange="handleImageUpload(3, event)">
+                    <input type="text" class="upload-input" id="label-3" placeholder="例如：夕陽下的淡水河口">
+                </div>
+            </div>
+
+            <!-- Poem Input -->
+            <div class="poem-input-area">
+                <div class="poem-title">✍️ 與 AI 共作的文句</div>
+                <div class="poem-description">寫下一句與 AI 共同創作的詩句或文字，作為你的明信片主題</div>
+                <textarea class="poem-textarea" id="poem-input" placeholder="例如：在時間的河口，我看見文明與自然的對話，每一粒沙都是歷史的低語..."></textarea>
+                <div style="margin-top: 1rem;">
+                    <label style="font-weight: 600; color: #1a365d; font-size: 1rem;">✏️ 你的名字</label>
+                    <input type="text" class="upload-input" id="author-name" placeholder="請輸入你的名字，將顯示在明信片上" style="margin-top: 0.5rem;">
+                </div>
+            </div>
+
+            <!-- Generate Button -->
+            <button class="generate-btn" id="generate-btn" disabled="" onclick="generatePostcard()">🎨 生成我的八里明信片</button>
+            <div class="btn-hint">三張照片、詩句與姓名都完成後即可生成（輸出為 4×6 拍立得相片）</div>
+
+            <!-- Postcard Preview -->
+            <div class="postcard-preview" id="postcard-preview">
+                <div class="postcard-container" id="postcard-container">
+                    <div class="postcard-stamp"></div>
+                    <div class="postcard-header">
+                        <div class="postcard-header-title">看見八里</div>
+                        <div class="postcard-header-date">2026 · VIII · XI</div>
+                        <div class="postcard-header-divider"></div>
+                    </div>
+                    <div class="postcard-photos">
+                        <div class="postcard-photo large">
+                            <img id="postcard-img-3" src="" alt="感動瞬間">
+                            <div class="postcard-photo-label" id="postcard-label-3"></div>
+                        </div>
+                        <div class="postcard-photo">
+                            <img id="postcard-img-1" src="" alt="微觀視角">
+                            <div class="postcard-photo-label" id="postcard-label-1"></div>
+                        </div>
+                        <div class="postcard-photo">
+                            <img id="postcard-img-2" src="" alt="肉眼視角">
+                            <div class="postcard-photo-label" id="postcard-label-2"></div>
+                        </div>
+                    </div>
+                    <div class="postcard-poem" id="postcard-poem"></div>
+                    <div class="postcard-author" id="postcard-author"></div>
+                    <div class="postcard-footer">2026 新北教育豐年祭 ── 看見八里</div>
+                </div>
+                <button class="download-btn" onclick="downloadPostcard()">📥 下載明信片</button>
+            </div>
+
+            <!-- Activity Assistant Link -->
+            <a href="https://app.edcafe.ai/chatbots/69d6745d71c4a7ad15dd7dcb" target="_blank" rel="noopener noreferrer" class="postcard-assistant-link">
+                <span class="postcard-assistant-icon">🤖</span>
+                <span class="postcard-assistant-text">
+                    <span>活動 AI 助理老師</span>
+                    <span>有問題嗎？點此向 AI 助理發問</span>
+                </span>
+                <span style="margin-left: auto; font-size: 1.2rem; opacity: 0.6;">→</span>
+            </a>
+        </section>
+
+        <!-- Info Section -->
+        <section class="info-section">
+            <h2 class="section-title">ℹ️ 實用資訊</h2>
+            <div class="info-grid" style="">
+                <div class="info-card">
+                    <div class="info-icon">📅</div>
+                    <div class="info-title">活動日期</div>
+                    <div class="info-text" style="">2026 年 8 月 11 ~12日<br>09:00~14:00</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">👨‍🏫</div>
+                    <div class="info-title">主導老師</div>
+                    <div class="info-text" style="width: 357.931px;">許凱琳、林英斌<br>江宇帆、許大偉</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🚌</div>
+                    <div class="info-title">交通方式</div>
+                    <div class="info-text">捷運淡水站轉乘公車紅13、紅22至十三行博物館站</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🎒</div>
+                    <div class="info-title">攜帶物品</div>
+                    <div class="info-text">防風外套、帽子、水壺、筆記本、手機（用於 AI 探索助手）</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kuse Branding -->
+        <div class="kuse-branding" style="">
+            <a href="https://kuse.ai" target="_blank" rel="noopener noreferrer">
+                <span>made with</span>
+                <svg viewBox="0,0,160,44" xmlns="http://www.w3.org/2000/svg"><path d="m.01,20.65C-.43,8.25,9.3-2.03,22.04.34,34.78,2.72,43.29,8.32,43.29,22.9s-8.66,19.01-22.03,20.3C7.9,44.5.46,33.05.01,20.65z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="m146.76,7.94c8.07,0,13.24,6.15,13.24,14.58v1.39h-20.75c.45,4.05,3.51,7.37,8.57,7.37,2.62,0,5.73-1.05,7.62-2.94l2.67,3.83c-2.67,2.55-6.62,3.88-10.9,3.88-8.07,0-14.08-5.6-14.08-14.08,0-7.76,5.67-14.02,13.63-14.02zm0,4.77c-5.01,0-7.29,3.83-7.57,7.1h15.13c-.11-3.16-2.28-7.1-7.57-7.1z" fill="currentColor"></path><path d="m86.64,24.49c0,4.15,2.39,6.84,6.84,6.84,4.4,0,6.84-2.69,6.84-6.84V8.55h5.37v16.33c0,6.7-4.06,11.14-12.21,11.14-8.21,0-12.21-4.5-12.21-11.09V8.55h5.37v15.94zm32.99-16.55c4.49,0,8.06,1.47,10.6,3.86l-2.59,3.81c-2.05-2-5.28-3.08-8.06-3.08-2.88,0-4.84,1.37-4.84,3.32,0,1.91,2.64,2.54,5.81,3.27,4.59,1.08,10.26,2.4,10.26,8.46,0,4.94-3.76,8.41-11.14,8.41-4.98,0-8.94-1.76-11.24-4.11l2.54-4.11c1.86,1.91,5.18,3.67,8.84,3.67,3.91,0,5.57-1.66,5.57-3.62,0-2.3-2.88-2.98-6.21-3.76-4.54-1.08-9.87-2.3-9.87-8.06,0-4.5,4.2-8.06,10.31-8.06zM60.79,20.82,71.44,8.55h6.5L66.46,21.26,78.82,35.44h-6.5l-9.28-11.1-2.25,2.49v8.6h-5.33V8.55h5.33v12.27z" fill="currentColor"></path></svg>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll(`a[href^="#"]`).forEach(anchor => {
+            anchor.addEventListener(`click`, function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute(`href`));
+                if (target) {
+                    target.scrollIntoView({ behavior: `smooth`, block: `start` });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: `0px 0px -50px 0px`
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(`visible`);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll(`.timeline-item, .knowledge-card, .task-item, .quote-card`).forEach(el => {
+            observer.observe(el);
+        });
+
+        // Toggle details
+        function toggleDetails(btn) {
+            const content = btn.previousElementSibling;
+            const isHidden = content.style.display === `none` || content.style.display === ``;
+            content.style.display = isHidden ? `block` : `none`;
+            btn.textContent = isHidden ? `收起詳細內容 ▲` : `展開詳細內容 ▼`;
+        }
+
+        // Toggle knowledge
+        function toggleKnowledge(type) {
+            const content = document.getElementById(`${type}-content`);
+            const btn = content.nextElementSibling;
+            const isCollapsed = content.style.maxHeight === `200px` || content.style.maxHeight === ``;
+            content.style.maxHeight = isCollapsed ? `none` : `200px`;
+            content.style.overflow = isCollapsed ? `visible` : `hidden`;
+            btn.textContent = isCollapsed ? `收起內容 ▲` : `展開完整內容 ▼`;
+        }
+
+        // Toggle task
+        function toggleTask(checkbox) {
+            checkbox.classList.toggle(`checked`);
+            const taskText = checkbox.nextElementSibling;
+            taskText.classList.toggle(`completed`);
+        }
+
+        // Image upload state
+        const uploadState = {
+            images: [null, null, null],
+            labels: [``, ``, ``]
+        };
+
+        function handleImageUpload(index, event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadState.images[index - 1] = e.target.result;
+                    const preview = document.getElementById(`preview-${index}`);
+                    const box = document.getElementById(`upload-box-${index}`);
+                    preview.src = e.target.result;
+                    preview.classList.add(`show`);
+                    box.classList.add(`has-image`);
+                    checkGenerateButton();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Check if generate button should be enabled
+        function checkGenerateButton() {
+            const allImagesUploaded = uploadState.images.every(img => img !== null);
+            const poemFilled = document.getElementById(`poem-input`).value.trim() !== ``;
+            const nameFilled = document.getElementById(`author-name`).value.trim() !== ``;
+            const btn = document.getElementById(`generate-btn`);
+            btn.disabled = !(allImagesUploaded && poemFilled && nameFilled);
+        }
+
+        // Listen to poem input and author name
+        document.getElementById(`poem-input`).addEventListener(`input`, checkGenerateButton);
+        document.getElementById(`author-name`).addEventListener(`input`, checkGenerateButton);
+
+        // Listen to label inputs
+        for (let i = 1; i <= 3; i++) {
+            document.getElementById(`label-${i}`).addEventListener(`input`, function() {
+                uploadState.labels[i - 1] = this.value;
+            });
+        }
+
+        // Generate postcard
+        function generatePostcard() {
+            // Get labels and poem
+            for (let i = 1; i <= 3; i++) {
+                uploadState.labels[i - 1] = document.getElementById(`label-${i}`).value || ``;
+            }
+            const poem = document.getElementById(`poem-input`).value.trim();
+
+            // Set postcard images
+            document.getElementById(`postcard-img-1`).src = uploadState.images[0];
+            document.getElementById(`postcard-img-2`).src = uploadState.images[1];
+            document.getElementById(`postcard-img-3`).src = uploadState.images[2];
+
+            // Set labels
+            document.getElementById(`postcard-label-1`).textContent = uploadState.labels[0] || `微觀視角`;
+            document.getElementById(`postcard-label-2`).textContent = uploadState.labels[1] || `肉眼視角`;
+            document.getElementById(`postcard-label-3`).textContent = uploadState.labels[2] || `感動瞬間`;
+
+            // Set poem
+            document.getElementById(`postcard-poem`).textContent = poem;
+
+            // Set author name
+            const authorName = document.getElementById(`author-name`).value.trim();
+            document.getElementById(`postcard-author`).textContent = authorName ? `—— ${authorName}` : ``;
+
+            // Show postcard
+            const preview = document.getElementById(`postcard-preview`);
+            preview.classList.add(`show`);
+            preview.scrollIntoView({ behavior: `smooth`, block: `center` });
+        }
+
+        // Download postcard
+        function downloadPostcard() {
+            const postcardContainer = document.getElementById(`postcard-container`);
+            html2canvas(postcardContainer, {
+                scale: 3,
+                backgroundColor: `#ffffff`,
+                logging: false,
+                useCORS: true,
+                width: postcardContainer.offsetWidth,
+                height: postcardContainer.offsetHeight
+            }).then(canvas => {
+                // Create 4x6 ratio canvas (1200x1800 at 300dpi)
+                const finalCanvas = document.createElement(`canvas`);
+                finalCanvas.width = 1200;
+                finalCanvas.height = 1800;
+                const ctx = finalCanvas.getContext(`2d`);
+                ctx.fillStyle = `#ffffff`;
+                ctx.fillRect(0, 0, 1200, 1800);
+                // Scale and center the postcard content
+                const srcRatio = canvas.width / canvas.height;
+                const dstRatio = 1200 / 1800;
+                let drawW, drawH, drawX, drawY;
+                if (srcRatio > dstRatio) {
+                    drawW = 1200;
+                    drawH = 1200 / srcRatio;
+                    drawX = 0;
+                    drawY = (1800 - drawH) / 2;
+                } else {
+                    drawH = 1800;
+                    drawW = 1800 * srcRatio;
+                    drawX = (1200 - drawW) / 2;
+                    drawY = 0;
+                }
+                ctx.drawImage(canvas, drawX, drawY, drawW, drawH);
+                const link = document.createElement(`a`);
+                const authorName = document.getElementById(`author-name`).value.trim() || `八里`;
+                link.download = `八里明信片_${authorName}_${new Date().getTime()}.png`;
+                link.href = finalCanvas.toDataURL(`image/png`, 1.0);
+                link.click();
+            });
+        }
+    </script>
+    <script src="https://cdn.kuse.ai/sdk.prd.js"></script>
+
+</body></html>
