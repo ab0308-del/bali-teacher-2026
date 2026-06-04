@@ -2297,36 +2297,27 @@
         // ── Download postcard (landscape 6×4 → 1800×1200px) ──
         function downloadPostcard() {
             const postcardContainer = document.getElementById(`postcard-container`);
+            const W = postcardContainer.offsetWidth;
+            const H = postcardContainer.offsetHeight;
             html2canvas(postcardContainer, {
-                scale: 3,
-                backgroundColor: null,
+                scale: 1800 / W,
+                backgroundColor: `#fffdf0`,
                 logging: false,
                 useCORS: true,
-                width: postcardContainer.offsetWidth,
-                height: postcardContainer.offsetHeight
+                width: W,
+                height: H,
+                windowWidth: W,
+                windowHeight: H,
+                onclone: (_doc, el) => {
+                    el.style.boxShadow = `none`;
+                    el.style.margin = `0`;
+                }
             }).then(canvas => {
                 const finalCanvas = document.createElement(`canvas`);
                 finalCanvas.width  = 1800;
                 finalCanvas.height = 1200;
                 const ctx = finalCanvas.getContext(`2d`);
-                ctx.fillStyle = `#fffdf0`;
-                ctx.fillRect(0, 0, 1800, 1200);
-
-                const srcRatio = canvas.width / canvas.height;
-                const dstRatio = 1800 / 1200;
-                let drawW, drawH, drawX, drawY;
-                if (srcRatio > dstRatio) {
-                    drawW = 1800;
-                    drawH = 1800 / srcRatio;
-                    drawX = 0;
-                    drawY = (1200 - drawH) / 2;
-                } else {
-                    drawH = 1200;
-                    drawW = 1200 * srcRatio;
-                    drawX = (1800 - drawW) / 2;
-                    drawY = 0;
-                }
-                ctx.drawImage(canvas, drawX, drawY, drawW, drawH);
+                ctx.drawImage(canvas, 0, 0, 1800, 1200);
 
                 const authorName = document.getElementById(`author-name`).value.trim() || `八里`;
                 const fileName = `八里明信片_${authorName}_${new Date().getTime()}.png`;
