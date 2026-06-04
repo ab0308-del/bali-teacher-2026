@@ -2295,11 +2295,32 @@
                 }
                 ctx.drawImage(canvas, drawX, drawY, drawW, drawH);
 
-                const link = document.createElement(`a`);
                 const authorName = document.getElementById(`author-name`).value.trim() || `八里`;
-                link.download = `八里明信片_${authorName}_${new Date().getTime()}.png`;
-                link.href = finalCanvas.toDataURL(`image/png`, 1.0);
-                link.click();
+                const fileName = `八里明信片_${authorName}_${new Date().getTime()}.png`;
+                const dataURL = finalCanvas.toDataURL(`image/png`, 1.0);
+
+                // iOS: use Web Share API with file (saves to photo library)
+                if (navigator.share && navigator.canShare) {
+                    finalCanvas.toBlob(async (blob) => {
+                        const file = new File([blob], fileName, { type: `image/png` });
+                        if (navigator.canShare({ files: [file] })) {
+                            try {
+                                await navigator.share({ files: [file], title: `八里明信片` });
+                                return;
+                            } catch (e) {
+                                if (e.name === `AbortError`) return;
+                            }
+                        }
+                        // fallback: open in new tab for long-press save
+                        window.open(dataURL, `_blank`);
+                    }, `image/png`, 1.0);
+                } else {
+                    // Desktop: direct download
+                    const link = document.createElement(`a`);
+                    link.download = fileName;
+                    link.href = dataURL;
+                    link.click();
+                }
             });
         }
     </script>
