@@ -685,7 +685,7 @@
         /* Top: photo collage (~72% of height) */
         .postcard-photos {
             flex: 11;
-            padding: 20px 13px 5px 13px;
+            padding: 28px 13px 4px 13px;
             display: grid;
             grid-template-columns: 5fr 3fr;
             grid-template-rows: 1fr 1fr;
@@ -733,12 +733,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 8px 28px 10px;
+            justify-content: flex-start;
+            padding: 10px 28px 0px;
             border-top: 1px solid rgba(212,160,23,0.45);
-            gap: 8px;
+            gap: 6px;
             min-height: 0;
             position: relative;
+            overflow: hidden;
         }
 
         .postcard-poem {
@@ -763,13 +764,26 @@
 
         .postcard-footer {
             position: absolute;
-            bottom: 5px;
-            right: 10px;
+            bottom: 12px;
+            right: 14px;
             font-size: 0.5rem;
             color: #c8a840;
             letter-spacing: 1.5px;
             font-family: 'Playfair Display', serif;
+            z-index: 2;
         }
+
+        .postcard-deco {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 72px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .postcard-deco svg { width: 100%; height: 100%; }
+        .postcard-poem, .postcard-author { position: relative; z-index: 1; }
 
         /* ── Photo adjustment modal ── */
         .photo-adjust-modal {
@@ -2010,6 +2024,25 @@
                         <div class="postcard-poem" id="postcard-poem"></div>
                         <div class="postcard-author" id="postcard-author"></div>
                         <div class="postcard-footer">2026 新北教育豐年祭 ── 看見八里 ── 8月11、12日</div>
+                        <div class="postcard-deco" aria-hidden="true">
+                            <svg viewBox="0 0 900 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- water waves -->
+                                <path d="M0,42 Q112,28 225,42 T450,42 T675,42 T900,42 L900,72 L0,72 Z" fill="rgba(142,198,210,0.18)"/>
+                                <path d="M0,54 Q150,40 300,54 T600,54 T900,54 L900,72 L0,72 Z" fill="rgba(142,198,210,0.13)"/>
+                                <!-- left fern -->
+                                <ellipse cx="55" cy="38" rx="26" ry="10" transform="rotate(-20,55,38)" fill="rgba(90,130,70,0.18)"/>
+                                <ellipse cx="38" cy="44" rx="18" ry="7" transform="rotate(-40,38,44)" fill="rgba(90,130,70,0.14)"/>
+                                <line x1="55" y1="48" x2="55" y2="68" stroke="rgba(90,130,70,0.2)" stroke-width="3"/>
+                                <!-- right fern -->
+                                <ellipse cx="845" cy="38" rx="26" ry="10" transform="rotate(20,845,38)" fill="rgba(90,130,70,0.18)"/>
+                                <ellipse cx="862" cy="44" rx="18" ry="7" transform="rotate(40,862,44)" fill="rgba(90,130,70,0.14)"/>
+                                <line x1="845" y1="48" x2="845" y2="68" stroke="rgba(90,130,70,0.2)" stroke-width="3"/>
+                                <!-- center small wave dots -->
+                                <circle cx="420" cy="60" r="2" fill="rgba(212,160,23,0.18)"/>
+                                <circle cx="450" cy="56" r="1.5" fill="rgba(212,160,23,0.14)"/>
+                                <circle cx="480" cy="60" r="2" fill="rgba(212,160,23,0.18)"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
                 <button class="download-btn" onclick="downloadPostcard()">📥 下載明信片</button>
