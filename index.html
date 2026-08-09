@@ -4,7 +4,7 @@
     <title>看見八里：用 AI 穿梭不同視角，探索時間與世界 | 2026 新北教育豐年祭</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@500;600;700&family=Noto+Serif+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@500;600;700&family=Noto+Serif+TC:wght@300;400;700&display=swap" rel="stylesheet">
     <script type="text/javascript" async="" src="//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"></script><script type="text/javascript" async="" src="//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"></script><script src="https://cdn.tailwindcss.com"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
@@ -716,9 +716,9 @@
         /* ── Landscape 6×4 postcard: photos top, text bottom ── */
         .postcard-container {
             background: linear-gradient(180deg, #fffdf0 0%, #fff9e4 70%, #fffdf5 100%);
-            border-radius: 4px;
+            border-radius: 10px;
             padding: 0;
-            border: 5px solid #d4a017;
+            border: 8px solid #d4a017;
             box-shadow:
                 0 0 0 2px #f5d060,
                 0 0 0 5px rgba(212,160,23,0.25),
@@ -727,7 +727,7 @@
             width: 100%;
             max-width: 900px;
             margin: 0 auto;
-            aspect-ratio: 6/4;
+            aspect-ratio: 3/2;
             display: flex;
             flex-direction: column;
             font-family: 'Noto Serif TC', serif;
@@ -744,10 +744,10 @@
             z-index: 2;
         }
 
-        /* Top: photo collage (~72% of height) */
+        /* Top: photo collage */
         .postcard-photos {
-            flex: 11;
-            padding: 28px 13px 4px 13px;
+            flex: 0 0 65%;
+            padding: 24px 16px 6px;
             display: grid;
             grid-template-columns: 5fr 3fr;
             grid-template-rows: 1fr 1fr;
@@ -771,7 +771,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: object-position 0.3s ease;
+            transition: object-position 0.25s ease, transform 0.25s ease;
+            transform-origin: center;
         }
 
         .postcard-photo-label {
@@ -782,23 +783,23 @@
             background: linear-gradient(to top, rgba(0,0,0,0.68), transparent);
             color: white;
             padding: 16px 6px 5px 6px;
-            font-size: 0.58rem;
+            font-size: 0.7rem;
             letter-spacing: 0.8px;
             font-family: 'Noto Serif TC', serif;
             text-align: center;
         }
 
-        /* Bottom: text area (~28% of height) */
+        /* Bottom: text area */
         .postcard-text-area {
-            flex: 4;
+            flex: 1 1 auto;
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding: 10px 28px 0px;
+            padding: 14px 40px 32px;
             border-top: 1px solid rgba(212,160,23,0.45);
-            gap: 6px;
+            gap: 4px;
             min-height: 0;
             position: relative;
             overflow: hidden;
@@ -806,27 +807,36 @@
 
         .postcard-poem {
             text-align: center;
-            font-size: 1.18rem;
-            line-height: 1.7;
+            font-size: clamp(0.86rem, 2vw, 1.08rem);
+            line-height: 1.45;
             color: #4a3000;
-            font-style: italic;
-            font-family: 'Dancing Script', 'Noto Serif TC', cursive;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            max-width: 90%;
+            font-family: 'LXGW WenKai TC', 'Noto Serif TC', cursive;
+            font-weight: 700;
+            letter-spacing: 0.35px;
+            max-width: 88%;
+            overflow-wrap: anywhere;
+        }
+
+        .postcard-poem.poem-medium {
+            font-size: clamp(0.76rem, 1.7vw, 0.94rem);
+        }
+
+        .postcard-poem.poem-long {
+            font-size: clamp(0.68rem, 1.45vw, 0.82rem);
+            line-height: 1.35;
         }
 
         .postcard-author {
             text-align: center;
-            font-size: 0.96rem;
+            font-size: 0.76rem;
             color: #7a5800;
             font-weight: 600;
-            font-family: 'Dancing Script', 'Noto Serif TC', cursive;
+            font-family: 'LXGW WenKai TC', 'Noto Serif TC', cursive;
         }
 
         .postcard-footer {
             position: absolute;
-            bottom: 12px;
+            bottom: 8px;
             right: 14px;
             font-size: 0.5rem;
             color: #c8a840;
@@ -837,10 +847,10 @@
 
         .postcard-deco {
             position: absolute;
-            bottom: 0;
+            bottom: -16px;
             left: 0;
             right: 0;
-            height: 72px;
+            height: 62px;
             pointer-events: none;
             z-index: 0;
         }
@@ -911,6 +921,18 @@
             object-fit: cover;
             pointer-events: none;
             display: block;
+            transform-origin: center;
+            will-change: transform, object-position;
+        }
+
+        .photo-adjust-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(to right, transparent 33.1%, rgba(255,255,255,0.65) 33.3%, rgba(255,255,255,0.65) 33.7%, transparent 33.9%, transparent 66.1%, rgba(255,255,255,0.65) 66.3%, rgba(255,255,255,0.65) 66.7%, transparent 66.9%),
+                linear-gradient(to bottom, transparent 33.1%, rgba(255,255,255,0.65) 33.3%, rgba(255,255,255,0.65) 33.7%, transparent 33.9%, transparent 66.1%, rgba(255,255,255,0.65) 66.3%, rgba(255,255,255,0.65) 66.7%, transparent 66.9%);
+            z-index: 8;
         }
 
         .photo-adjust-focal {
@@ -921,6 +943,8 @@
             border-radius: 50%;
             box-shadow: 0 0 0 2px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.5);
             pointer-events: none;
+            left: 50%;
+            top: 50%;
             transform: translate(-50%, -50%);
             z-index: 10;
         }
@@ -947,6 +971,103 @@
             right: -10px;
             height: 2px;
             transform: translateY(-50%);
+        }
+
+        .photo-adjust-controls {
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 0.7rem;
+            color: #4a5568;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.86rem;
+        }
+
+        .photo-adjust-controls input[type="range"] {
+            width: 100%;
+            accent-color: #d4a017;
+        }
+
+        .photo-adjust-reset {
+            border: 1px solid #cbd5e0;
+            background: #f7fafc;
+            color: #4a5568;
+            border-radius: 7px;
+            padding: 0.35rem 0.65rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .poem-count {
+            margin-top: 0.45rem;
+            text-align: right;
+            color: #718096;
+            font-size: 0.8rem;
+        }
+
+        /* Fixed print canvas prevents mobile responsive styles from shrinking the export. */
+        .postcard-export-stage {
+            position: fixed;
+            left: -10000px;
+            top: 0;
+            width: 900px;
+            height: 600px;
+            overflow: hidden;
+            background: #fffdf0;
+            z-index: -1;
+        }
+
+        .postcard-export-stage .postcard-container {
+            width: 900px !important;
+            max-width: none !important;
+            height: 600px !important;
+            aspect-ratio: auto !important;
+            margin: 0 !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+
+        .postcard-export-stage .postcard-photos {
+            flex: 0 0 390px !important;
+            padding: 24px 16px 6px !important;
+            gap: 6px !important;
+        }
+
+        .postcard-export-stage .postcard-text-area {
+            height: 202px !important;
+            flex: 0 0 202px !important;
+            padding: 16px 42px 34px !important;
+            gap: 4px !important;
+        }
+
+        .postcard-export-stage .postcard-poem {
+            max-width: 790px !important;
+            line-height: 1.42 !important;
+            font-size: 20px !important;
+        }
+
+        .postcard-export-stage .postcard-poem.poem-medium {
+            font-size: 17px !important;
+        }
+
+        .postcard-export-stage .postcard-poem.poem-long {
+            font-size: 15px !important;
+        }
+
+        .postcard-export-stage .postcard-author {
+            font-size: 13px !important;
+        }
+
+        .postcard-export-stage .postcard-footer {
+            bottom: 8px !important;
+            right: 14px !important;
+            font-size: 9px !important;
+        }
+
+        .postcard-export-stage .postcard-deco {
+            bottom: -16px !important;
+            height: 62px !important;
         }
 
         .adjust-confirm-btn {
@@ -2121,7 +2242,8 @@
             <div class="poem-input-area">
                 <div class="poem-title">✍️ 與 AI 共作的文句</div>
                 <div class="poem-description">寫下一句與 AI 共同創作的詩句或文字，作為你的明信片主題</div>
-                <textarea class="poem-textarea" id="poem-input" placeholder="例如：在時間的河口，我看見文明與自然的對話，每一粒沙都是歷史的低語..."></textarea>
+                <textarea class="poem-textarea" id="poem-input" maxlength="70" placeholder="例如：在時間的河口，我看見文明與自然的對話，每一粒沙都是歷史的低語..."></textarea>
+                <div class="poem-count"><span id="poem-count">0</span>／70 字</div>
                 <div style="margin-top: 1rem;">
                     <label style="font-weight: 600; color: #1a365d; font-size: 1rem;">✏️ 你的名字</label>
                     <input type="text" class="upload-input" id="author-name" placeholder="請輸入你的名字，將顯示在明信片上" style="margin-top: 0.5rem;">
@@ -2130,7 +2252,7 @@
 
             <!-- Generate Button -->
             <button class="generate-btn" id="generate-btn" disabled="" onclick="generatePostcard()">🎨 生成我的八里明信片</button>
-            <div class="btn-hint">三張照片上傳後可點「✂️ 調整焦點」設定主角位置，完成詩句與姓名後生成橫向 6×4 明信片</div>
+            <div class="btn-hint">三張照片上傳後可調整裁切、縮放與主角位置，完成詩句與姓名後生成橫向 6 × 4 明信片</div>
 
             <!-- Postcard Preview -->
             <div class="postcard-preview" id="postcard-preview">
@@ -2195,10 +2317,19 @@
             <div class="photo-adjust-overlay" onclick="closeAdjustModal()"></div>
             <div class="photo-adjust-dialog">
                 <div class="photo-adjust-title">✂️ 調整照片焦點</div>
-                <div class="photo-adjust-hint">點擊或拖曳，將準星移到主角位置</div>
+                <div class="photo-adjust-hint">拖曳照片移動主角，使用滑桿調整裁切大小</div>
                 <div class="photo-adjust-canvas-wrap" id="adjust-canvas-wrap">
                     <img id="adjust-img" alt="調整預覽">
+                    <div class="photo-adjust-grid" aria-hidden="true"></div>
                     <div class="photo-adjust-focal" id="adjust-focal"></div>
+                </div>
+                <div class="photo-adjust-controls">
+                    <span>縮小</span>
+                    <input type="range" id="adjust-zoom" min="1" max="2.5" step="0.05" value="1" aria-label="照片縮放比例">
+                    <span>放大</span>
+                </div>
+                <div style="text-align:center; margin-top:0.75rem;">
+                    <button type="button" onclick="resetAdjust()" class="photo-adjust-reset">重設位置</button>
                 </div>
                 <div style="display:flex; gap:1rem; justify-content:center; margin-top:1.25rem;">
                     <button onclick="closeAdjustModal()" class="adjust-cancel-btn">取消</button>
@@ -2298,13 +2429,14 @@
             labels: [``, ``, ``]
         };
 
-        // Focal point per photo (percentage x, y)
+        // Crop position and zoom per photo
         const adjustData = [
-            { x: 50, y: 50 },
-            { x: 50, y: 50 },
-            { x: 50, y: 50 }
+            { x: 50, y: 50, scale: 1 },
+            { x: 50, y: 50, scale: 1 },
+            { x: 50, y: 50, scale: 1 }
         ];
         let adjustingIndex = null;
+        let draftAdjust = null;
 
         function handleImageUpload(index, event) {
             const file = event.target.files[0];
@@ -2312,11 +2444,11 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     uploadState.images[index - 1] = e.target.result;
-                    adjustData[index - 1] = { x: 50, y: 50 };
+                    adjustData[index - 1] = { x: 50, y: 50, scale: 1 };
                     const preview = document.getElementById(`preview-${index}`);
                     const box = document.getElementById(`upload-box-${index}`);
                     preview.src = e.target.result;
-                    preview.style.objectPosition = `50% 50%`;
+                    applyCropStyles(preview, adjustData[index - 1]);
                     preview.classList.add(`show`);
                     box.classList.add(`has-image`);
                     document.getElementById(`adjust-btn-${index}`).style.display = `block`;
@@ -2335,7 +2467,10 @@
             btn.disabled = !(allImagesUploaded && poemFilled && nameFilled);
         }
 
-        document.getElementById(`poem-input`).addEventListener(`input`, checkGenerateButton);
+        document.getElementById(`poem-input`).addEventListener(`input`, function() {
+            document.getElementById(`poem-count`).textContent = this.value.length;
+            checkGenerateButton();
+        });
         document.getElementById(`author-name`).addEventListener(`input`, checkGenerateButton);
 
         for (let i = 1; i <= 3; i++) {
@@ -2344,56 +2479,94 @@
             });
         }
 
-        // ── Photo adjustment modal ──
+        function applyCropStyles(img, data) {
+            img.style.objectPosition = `${data.x}% ${data.y}%`;
+            img.style.transform = `scale(${data.scale})`;
+        }
+
+        function renderAdjustPreview() {
+            if (!draftAdjust) return;
+            applyCropStyles(document.getElementById(`adjust-img`), draftAdjust);
+            document.getElementById(`adjust-zoom`).value = draftAdjust.scale;
+        }
+
+        // ── Photo crop and focal-point modal ──
         function openAdjustModal(index, evt) {
             evt.stopPropagation();
             adjustingIndex = index;
 
             const modal = document.getElementById(`photo-adjust-modal`);
             const img = document.getElementById(`adjust-img`);
-            const focal = document.getElementById(`adjust-focal`);
             const wrap = document.getElementById(`adjust-canvas-wrap`);
 
             img.src = uploadState.images[index - 1];
-
-            const d = adjustData[index - 1];
-            focal.style.left = d.x + `%`;
-            focal.style.top  = d.y + `%`;
+            draftAdjust = { ...adjustData[index - 1] };
+            wrap.style.aspectRatio = index === 3 ? `1.85 / 1` : `1.55 / 1`;
 
             modal.style.display = `flex`;
+            renderAdjustPreview();
 
-            function moveFocal(clientX, clientY) {
+            let dragStart = null;
+            wrap.onpointerdown = (e) => {
+                e.preventDefault();
+                wrap.setPointerCapture(e.pointerId);
                 const rect = wrap.getBoundingClientRect();
-                let x = ((clientX - rect.left) / rect.width)  * 100;
-                let y = ((clientY - rect.top)  / rect.height) * 100;
-                x = Math.max(0, Math.min(100, x));
-                y = Math.max(0, Math.min(100, y));
-                focal.style.left = x + `%`;
-                focal.style.top  = y + `%`;
-            }
+                dragStart = {
+                    clientX: e.clientX,
+                    clientY: e.clientY,
+                    x: draftAdjust.x,
+                    y: draftAdjust.y,
+                    width: rect.width,
+                    height: rect.height
+                };
+            };
+            wrap.onpointermove = (e) => {
+                if (!dragStart) return;
+                const dx = (e.clientX - dragStart.clientX) / dragStart.width * 100 / draftAdjust.scale;
+                const dy = (e.clientY - dragStart.clientY) / dragStart.height * 100 / draftAdjust.scale;
+                draftAdjust.x = Math.max(0, Math.min(100, dragStart.x - dx));
+                draftAdjust.y = Math.max(0, Math.min(100, dragStart.y - dy));
+                renderAdjustPreview();
+            };
+            wrap.onpointerup = wrap.onpointercancel = () => { dragStart = null; };
 
-            wrap.onmousedown = (e) => { e.preventDefault(); moveFocal(e.clientX, e.clientY); };
-            wrap.onmousemove = (e) => { if (e.buttons === 1) moveFocal(e.clientX, e.clientY); };
-            wrap.ontouchstart = (e) => { e.preventDefault(); moveFocal(e.touches[0].clientX, e.touches[0].clientY); };
-            wrap.ontouchmove  = (e) => { e.preventDefault(); moveFocal(e.touches[0].clientX, e.touches[0].clientY); };
+            document.getElementById(`adjust-zoom`).oninput = function() {
+                draftAdjust.scale = parseFloat(this.value);
+                renderAdjustPreview();
+            };
         }
 
         function confirmAdjust() {
-            const focal = document.getElementById(`adjust-focal`);
-            const x = parseFloat(focal.style.left);
-            const y = parseFloat(focal.style.top);
-            adjustData[adjustingIndex - 1] = { x, y };
-
-            // Live-update the upload preview
+            adjustData[adjustingIndex - 1] = { ...draftAdjust };
             const preview = document.getElementById(`preview-${adjustingIndex}`);
-            preview.style.objectPosition = `${x}% ${y}%`;
+            applyCropStyles(preview, draftAdjust);
 
             closeAdjustModal();
         }
 
+        function resetAdjust() {
+            draftAdjust = { x: 50, y: 50, scale: 1 };
+            renderAdjustPreview();
+        }
+
         function closeAdjustModal() {
             document.getElementById(`photo-adjust-modal`).style.display = `none`;
+            const wrap = document.getElementById(`adjust-canvas-wrap`);
+            wrap.onpointerdown = null;
+            wrap.onpointermove = null;
+            wrap.onpointerup = null;
+            wrap.onpointercancel = null;
             adjustingIndex = null;
+            draftAdjust = null;
+        }
+
+        function applyPoemSize(poemElement, poem) {
+            poemElement.classList.remove(`poem-medium`, `poem-long`);
+            if (poem.length > 52) {
+                poemElement.classList.add(`poem-long`);
+            } else if (poem.length > 34) {
+                poemElement.classList.add(`poem-medium`);
+            }
         }
 
         // ── Generate postcard ──
@@ -2408,14 +2581,16 @@
             for (let i = 1; i <= 3; i++) {
                 const el = document.getElementById(imgMap[i]);
                 el.src = uploadState.images[i - 1];
-                el.style.objectPosition = `${adjustData[i - 1].x}% ${adjustData[i - 1].y}%`;
+                applyCropStyles(el, adjustData[i - 1]);
             }
 
             document.getElementById(`postcard-label-1`).textContent = uploadState.labels[0] || `微觀視角`;
             document.getElementById(`postcard-label-2`).textContent = uploadState.labels[1] || `肉眼視角`;
             document.getElementById(`postcard-label-3`).textContent = uploadState.labels[2] || `感動瞬間`;
 
-            document.getElementById(`postcard-poem`).textContent = poem;
+            const poemElement = document.getElementById(`postcard-poem`);
+            poemElement.textContent = poem;
+            applyPoemSize(poemElement, poem);
 
             const authorName = document.getElementById(`author-name`).value.trim();
             document.getElementById(`postcard-author`).textContent = authorName ? `—— ${authorName}` : ``;
@@ -2426,37 +2601,50 @@
         }
 
         // ── Download postcard (landscape 6×4 → 1800×1200px) ──
-        function downloadPostcard() {
+        async function downloadPostcard() {
             const postcardContainer = document.getElementById(`postcard-container`);
-            const W = postcardContainer.offsetWidth;
-            const H = postcardContainer.offsetHeight;
-            html2canvas(postcardContainer, {
-                scale: 1800 / W,
-                backgroundColor: `#fffdf0`,
-                logging: false,
-                useCORS: true,
-                width: W,
-                height: H,
-                windowWidth: W,
-                windowHeight: H,
-                onclone: (_doc, el) => {
-                    el.style.boxShadow = `none`;
-                    el.style.margin = `0`;
-                }
-            }).then(canvas => {
-                const finalCanvas = document.createElement(`canvas`);
-                finalCanvas.width  = 1800;
-                finalCanvas.height = 1200;
-                const ctx = finalCanvas.getContext(`2d`);
-                ctx.drawImage(canvas, 0, 0, 1800, 1200);
+            const downloadButton = document.querySelector(`.download-btn`);
+            const oldButtonText = downloadButton.textContent;
+            downloadButton.disabled = true;
+            downloadButton.textContent = `正在製作 6 × 4 明信片…`;
+
+            const stage = document.createElement(`div`);
+            stage.className = `postcard-export-stage`;
+            const exportCard = postcardContainer.cloneNode(true);
+            exportCard.removeAttribute(`id`);
+            stage.appendChild(exportCard);
+            document.body.appendChild(stage);
+
+            try {
+                if (document.fonts && document.fonts.ready) await document.fonts.ready;
+                await Promise.all(Array.from(exportCard.querySelectorAll(`img`)).map(img => {
+                    if (img.complete) return img.decode ? img.decode().catch(() => {}) : Promise.resolve();
+                    return new Promise(resolve => {
+                        img.onload = resolve;
+                        img.onerror = resolve;
+                    });
+                }));
+
+                const canvas = await html2canvas(exportCard, {
+                    scale: 2,
+                    backgroundColor: `#fffdf0`,
+                    logging: false,
+                    useCORS: true,
+                    width: 900,
+                    height: 600,
+                    windowWidth: 1200,
+                    windowHeight: 800,
+                    scrollX: 0,
+                    scrollY: 0
+                });
 
                 const authorName = document.getElementById(`author-name`).value.trim() || `八里`;
-                const fileName = `八里明信片_${authorName}_${new Date().getTime()}.png`;
-                const dataURL = finalCanvas.toDataURL(`image/png`, 1.0);
+                const fileName = `八里明信片_6x4_${authorName}_${new Date().getTime()}.png`;
+                const dataURL = canvas.toDataURL(`image/png`, 1.0);
 
-                // iOS: use Web Share API with file (saves to photo library)
-                if (navigator.share && navigator.canShare) {
-                    finalCanvas.toBlob(async (blob) => {
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+                if (isIOS && navigator.share && navigator.canShare) {
+                    canvas.toBlob(async (blob) => {
                         const file = new File([blob], fileName, { type: `image/png` });
                         if (navigator.canShare({ files: [file] })) {
                             try {
@@ -2466,17 +2654,25 @@
                                 if (e.name === `AbortError`) return;
                             }
                         }
-                        // fallback: open in new tab for long-press save
-                        window.open(dataURL, `_blank`);
+                        const link = document.createElement(`a`);
+                        link.download = fileName;
+                        link.href = dataURL;
+                        link.click();
                     }, `image/png`, 1.0);
                 } else {
-                    // Desktop: direct download
                     const link = document.createElement(`a`);
                     link.download = fileName;
                     link.href = dataURL;
                     link.click();
                 }
-            });
+            } catch (error) {
+                console.error(error);
+                alert(`明信片產生失敗，請重新整理頁面後再試一次。`);
+            } finally {
+                stage.remove();
+                downloadButton.disabled = false;
+                downloadButton.textContent = oldButtonText;
+            }
         }
     </script>
     <script src="https://cdn.kuse.ai/sdk.prd.js"></script>
