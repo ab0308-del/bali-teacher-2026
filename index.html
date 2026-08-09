@@ -836,12 +836,17 @@
 
         .postcard-footer {
             position: absolute;
-            bottom: 8px;
-            right: 14px;
-            font-size: 0.5rem;
-            color: #c8a840;
-            letter-spacing: 1.5px;
-            font-family: 'Playfair Display', serif;
+            bottom: 9px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            padding: 0 18px;
+            font-size: 0.68rem;
+            color: #805b00;
+            letter-spacing: 0.9px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 700;
+            text-align: center;
             z-index: 2;
         }
 
@@ -1061,8 +1066,10 @@
 
         .postcard-export-stage .postcard-footer {
             bottom: 8px !important;
-            right: 14px !important;
-            font-size: 9px !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            font-size: 11px !important;
         }
 
         .postcard-export-stage .postcard-deco {
@@ -1104,7 +1111,7 @@
         .adjust-cancel-btn:hover { background: #edf2f7; }
 
         .adjust-photo-btn {
-            display: none;
+            display: block;
             width: 100%;
             margin-top: 0.6rem;
             background: linear-gradient(135deg, #fff8e1, #fef3c7);
@@ -1126,6 +1133,16 @@
             border-color: #d4a017;
             transform: translateY(-1px);
             box-shadow: 0 3px 10px rgba(212,160,23,0.3);
+        }
+
+        .adjust-photo-btn:disabled {
+            display: block;
+            cursor: not-allowed;
+            background: #edf2f7;
+            border-color: #cbd5e0;
+            color: #718096;
+            box-shadow: none;
+            transform: none;
         }
 
         /* Activity assistant link inside postcard section */
@@ -1201,6 +1218,32 @@
             background: linear-gradient(135deg, #3182ce, #2c5282);
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(66,153,225,0.4);
+        }
+
+        .postcard-action-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .postcard-action-row .download-btn {
+            margin: 0;
+        }
+
+        .edit-postcard-btn {
+            width: 100%;
+            max-width: 300px;
+            padding: 1rem 2rem;
+            border: 2px solid #d4a017;
+            border-radius: 12px;
+            background: #fff8df;
+            color: #704b00;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
         }
 
         @keyframes fadeIn {
@@ -1366,16 +1409,41 @@
             }
 
             .postcard-photos {
+                flex: 0 0 58%;
                 padding: 8px 8px 4px 8px;
                 gap: 4px;
             }
 
             .postcard-poem {
-                font-size: 0.82rem;
+                font-size: 0.52rem;
+                line-height: 1.25;
+            }
+
+            .postcard-poem.poem-medium {
+                font-size: 0.46rem;
+            }
+
+            .postcard-poem.poem-long {
+                font-size: 0.4rem;
+                line-height: 1.2;
+            }
+
+            .postcard-author {
+                font-size: 0.45rem;
             }
 
             .postcard-text-area {
-                padding: 5px 14px 7px;
+                flex: 0 0 42%;
+                height: 42%;
+                padding: 3px 8px 15px;
+                gap: 1px;
+            }
+
+            .postcard-footer {
+                bottom: 3px;
+                padding: 0 5px;
+                font-size: 0.45rem;
+                letter-spacing: 0.25px;
             }
 
             .postcard-assistant-link {
@@ -1676,7 +1744,7 @@
             <h1 class="hero-title">看見八里</h1>
             <p class="hero-subtitle" style="">用 AI 穿梭不同視角，探索時間的世界</p>
             <p class="hero-description" style="">
-                2026 新北教育豐年季<span style="-webkit-text-size-adjust: 100%;">｜第三組 自然科技創藝組<br></span><span style="-webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%;">從史前文明到當代生態，從微觀細節到宏觀視野<br></span><span style="-webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%;">一場融合歷史、科技與環境的深度學習之旅</span></p>
+                2026 新北教育豐年祭<span style="-webkit-text-size-adjust: 100%;">｜第三組 自然科技創藝組<br></span><span style="-webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%;">從史前文明到當代生態，從微觀細節到宏觀視野<br></span><span style="-webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%;">一場融合歷史、科技與環境的深度學習之旅</span></p>
             <p></p>
             <div class="quick-nav">
                 <a href="#stage0" class="quick-nav-btn">🎤 開幕式</a>
@@ -2205,7 +2273,7 @@
                         <img class="upload-preview" id="preview-1" alt="微觀視角">
                     </div>
                     <input type="file" id="file-input-1" accept="image/*" style="display: none;" onchange="handleImageUpload(1, event)">
-                    <button class="adjust-photo-btn" id="adjust-btn-1" onclick="openAdjustModal(1, event)">✂️ 調整照片位置</button>
+                    <button class="adjust-photo-btn" id="adjust-btn-1" disabled onclick="openAdjustModal(1, event)">✂️ 調整位置與大小</button>
                     <input type="text" class="upload-input" id="label-1" placeholder="例如：人面陶罐的紋理">
                 </div>
 
@@ -2219,7 +2287,7 @@
                         <img class="upload-preview" id="preview-2" alt="肉眼視角">
                     </div>
                     <input type="file" id="file-input-2" accept="image/*" style="display: none;" onchange="handleImageUpload(2, event)">
-                    <button class="adjust-photo-btn" id="adjust-btn-2" onclick="openAdjustModal(2, event)">✂️ 調整照片位置</button>
+                    <button class="adjust-photo-btn" id="adjust-btn-2" disabled onclick="openAdjustModal(2, event)">✂️ 調整位置與大小</button>
                     <input type="text" class="upload-input" id="label-2" placeholder="例如：紅樹林中的招潮蟹">
                 </div>
 
@@ -2233,7 +2301,7 @@
                         <img class="upload-preview" id="preview-3" alt="感動瞬間">
                     </div>
                     <input type="file" id="file-input-3" accept="image/*" style="display: none;" onchange="handleImageUpload(3, event)">
-                    <button class="adjust-photo-btn" id="adjust-btn-3" onclick="openAdjustModal(3, event)">✂️ 調整照片位置</button>
+                    <button class="adjust-photo-btn" id="adjust-btn-3" disabled onclick="openAdjustModal(3, event)">✂️ 調整位置與大小</button>
                     <input type="text" class="upload-input" id="label-3" placeholder="例如：夕陽下的淡水河口">
                 </div>
             </div>
@@ -2276,7 +2344,7 @@
                     <div class="postcard-text-area">
                         <div class="postcard-poem" id="postcard-poem"></div>
                         <div class="postcard-author" id="postcard-author"></div>
-                        <div class="postcard-footer">2026 新北教育豐年祭 ── 看見八里 ── 8月11、12日</div>
+                        <div class="postcard-footer">2026 新北 AI 教育豐年祭　8 / 11 @ 八里</div>
                         <div class="postcard-deco" aria-hidden="true">
                             <svg viewBox="0 0 900 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                                 <!-- water waves -->
@@ -2298,7 +2366,10 @@
                         </div>
                     </div>
                 </div>
-                <button class="download-btn" onclick="downloadPostcard()">📥 下載明信片</button>
+                <div class="postcard-action-row">
+                    <button class="edit-postcard-btn" onclick="returnToPostcardEditor()">✏️ 返回調整照片</button>
+                    <button class="download-btn" onclick="downloadPostcard()">📥 下載明信片</button>
+                </div>
             </div>
 
             <!-- Activity Assistant Link -->
@@ -2451,7 +2522,7 @@
                     applyCropStyles(preview, adjustData[index - 1]);
                     preview.classList.add(`show`);
                     box.classList.add(`has-image`);
-                    document.getElementById(`adjust-btn-${index}`).style.display = `block`;
+                    document.getElementById(`adjust-btn-${index}`).disabled = false;
                     checkGenerateButton();
                 };
                 reader.readAsDataURL(file);
@@ -2493,6 +2564,7 @@
         // ── Photo crop and focal-point modal ──
         function openAdjustModal(index, evt) {
             evt.stopPropagation();
+            if (!uploadState.images[index - 1]) return;
             adjustingIndex = index;
 
             const modal = document.getElementById(`photo-adjust-modal`);
@@ -2597,7 +2669,12 @@
 
             const preview = document.getElementById(`postcard-preview`);
             preview.classList.add(`show`);
+            document.getElementById(`generate-btn`).textContent = `🔄 套用修改並重新產生明信片`;
             preview.scrollIntoView({ behavior: `smooth`, block: `center` });
+        }
+
+        function returnToPostcardEditor() {
+            document.querySelector(`.upload-grid`).scrollIntoView({ behavior: `smooth`, block: `start` });
         }
 
         // ── Download postcard (landscape 6×4 → 1800×1200px) ──
