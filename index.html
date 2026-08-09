@@ -324,6 +324,47 @@
             box-shadow: 0 6px 14px rgba(214,158,46,0.35);
         }
 
+        .photo-submit-panel {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ebf8ff, #e6fffa);
+            border: 2px solid rgba(49, 151, 149, 0.25);
+        }
+
+        .photo-submit-title {
+            color: #234e52;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .photo-submit-copy {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .photo-submit-btn {
+            display: block;
+            width: 100%;
+            margin-top: 0.85rem;
+            padding: 0.85rem 1.5rem;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #319795, #2c7a7b);
+            color: white;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(49, 151, 149, 0.25);
+        }
+
+        .photo-submit-btn:hover {
+            background: linear-gradient(135deg, #38b2ac, #319795);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(49, 151, 149, 0.35);
+        }
+
         .knowledge-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1750,6 +1791,13 @@
                             </div>
                         </div>
                         <button class="toggle-btn" onclick="toggleDetails(this)">展開詳細內容 ▼</button>
+                        <div class="photo-submit-panel">
+                            <div class="photo-submit-title">活動照片與明信片交件</div>
+                            <div class="photo-submit-copy">
+                                請上傳 1 張明信片列印照片，並繳交至少 3 張活動成果照片；每張活動照片都要填寫拍攝者、地點與簡單描述。
+                            </div>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLScVnxXYlCgorRbYZifgu5ttc-F7dix3HxJ_ZdQBDtsVQL_n9g/viewform" target="_blank" rel="noopener noreferrer" class="photo-submit-btn">開啟照片繳交表單 ↗</a>
+                        </div>
                     </div>
                 </div>
 
